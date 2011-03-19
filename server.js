@@ -12,8 +12,8 @@ app.configure(function(){
 var Subject = require('./models/subject').Subject;
 var subject = new Subject();
 
-app.get('/', function(request, response){
-	subject.findAll(function(error, docs) {
+app.get('/', function(request, response) {
+	subject.findById(2, function(error, docs) {
 		response.write(require('sys').inspect(docs));
 	});
 	response.end();
