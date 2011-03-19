@@ -9,12 +9,19 @@ app.configure(function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
+app.set('view engine', 'jade');
+
 var Subject = require('./models/subject').Subject;
 var subject = new Subject();
 
 app.get('/', function(request, response) {
-	subject.findById(2, function(error, docs) {
-		response.write(require('sys').inspect(docs));
+	response.sendHeader(200, {"Content-Type": "text/plain"});
+	subject.findAll(function(error, subjects) {
+		response.render('views/index', {
+			locals: {
+				subjects: subjects
+			}
+		});
 	});
 	response.end();
 });
