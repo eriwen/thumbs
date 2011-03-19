@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express.createServer();
 
+app.set('view engine', 'jade');
+app.set('views', __dirname + '/views');
+
 app.configure(function(){
     app.use(express.methodOverride());
     app.use(express.bodyParser());
@@ -9,15 +12,13 @@ app.configure(function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-app.set('view engine', 'jade');
-app.set('views', __dirname + '/views');
-
 var Subject = require('./models/subject').Subject;
 var subject = new Subject();
 
 app.get('/', function(request, response) {
 	subject.findAll(function(error, subjects) {
 		response.render('index', {
+			layout: false,
 			locals: {
 				pageTitle: 'Do we have a quorum?',
 				subjects: subjects
