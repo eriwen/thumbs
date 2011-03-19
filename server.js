@@ -19,7 +19,7 @@ app.get('/', function(request, response) {
 	subject.findAll(function(error, subjects) {
 		response.render('index', {
 			locals: {
-				pageTitle: 'Do we have a quorum?'
+				pageTitle: 'Do we have a quorum?',
 				subjects: subjects
 			}
 		});
