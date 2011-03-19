@@ -4,8 +4,8 @@ html(lang="en")
 		title= pageTitle
 	body
 		h1 Do we have a Quorum?
-			#wrap
-				#subjects
-					- each subject in subjects
-						h3.name= subject.name
-						.rating= subject.rating
+		#wrap
+			#subjects
+				- each subject in subjects
+					h3.name= subject.name
+					.rating= subject.rating
