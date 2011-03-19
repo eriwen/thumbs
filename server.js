@@ -14,8 +14,9 @@ var subject = new Subject();
 
 app.get('/', function(request, response){
 	subject.findAll(function(error, docs) {
-		response.render(200, require('sys').inspect(docs));
+		response.write(require('sys').inspect(docs));
 	});
+	response.end();
 });
 
 app.listen(process.env.PORT || 8001);
