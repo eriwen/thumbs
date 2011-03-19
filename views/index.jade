@@ -1,6 +1,7 @@
-- each subject in subjects
-  %section.subject
-    %h3.name= subject.name
-    %ul.notes
-    - each note in subject.notes
-       %li.note= note
+section#subjects
+  - each subject in subjects
+    section.subject
+      h3.name= subject.name
+      ul.notes
+        - each note in subject.notes
+          li.note= note
