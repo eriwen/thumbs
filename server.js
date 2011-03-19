@@ -1,4 +1,5 @@
-var app = require('express').createServer();
+var express = require('express');
+var app = express.createServer();
 
 var Subject = require('./models/subject').Subject;
 
