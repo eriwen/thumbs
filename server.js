@@ -10,13 +10,14 @@ app.configure(function(){
 });
 
 app.set('view engine', 'jade');
+app.set('views', __dirname + '/views');
 
 var Subject = require('./models/subject').Subject;
 var subject = new Subject();
 
 app.get('/', function(request, response) {
 	subject.findAll(function(error, subjects) {
-		response.render('views/index', {
+		response.render('index', {
 			locals: {
 				subjects: subjects
 			}
