@@ -5,9 +5,9 @@ html(lang="en")
   body
     h1 Do we have a Quorum?
     #container
-      - each subject in subjects
-        %section.subject
-          %h3.name= subject.name
-          %ul.notes
-            - each note in subject.notes
-               %li.note= note
+    - each subject in subjects
+      %section.subject
+        %h3.name= subject.name
+        %ul.notes
+        - each note in subject.notes
+           %li.note= note
