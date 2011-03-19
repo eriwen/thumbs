@@ -9,8 +9,7 @@ Subject.prototype.findAll = function(callback) {
 
 Subject.prototype.findById = function(id, callback) {
 	var result = null;
-	var len = this.dummyData.length;
-	for (; i < len; i++) {
+	for (var i = 0, len = this.dummyData.length; i < len; i++) {
 		if (this.dummyData[i]._id == id) {
 			result = this.dummyData[i];
 			break;
@@ -22,8 +21,7 @@ Subject.prototype.findById = function(id, callback) {
 Subject.prototype.save = function(subjects, callback) {
 	var subject = null;
 	
-	var len = subjects.length;
-	for(; i < len; i++) {
+	for(var i = 0, len = subjects.length; i < len; i++) {
 		subject = subjects[i];
 		subject._id = subjectCounter++;
 		if (!subject.notes) {
