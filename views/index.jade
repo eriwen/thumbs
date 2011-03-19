@@ -1,6 +1,11 @@
-#subjects
-	- each subject in subjects
-		h3.name= subject.name
-		ul.notes
-			- each note in subject.notes
-				li.note= note
+!!! 5
+html(lang="en")
+	head
+		title= pageTitle
+	body
+		h1 Do we have a Quorum?
+			#wrap
+				#subjects
+					- each subject in subjects
+						h3.name= subject.name
+						.rating= subject.rating
