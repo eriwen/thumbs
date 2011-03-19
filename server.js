@@ -15,7 +15,6 @@ var Subject = require('./models/subject').Subject;
 var subject = new Subject();
 
 app.get('/', function(request, response) {
-	response.sendHeader(200, {"Content-Type": "text/plain"});
 	subject.findAll(function(error, subjects) {
 		response.render('views/index', {
 			locals: {
