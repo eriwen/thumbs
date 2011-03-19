@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express.createServer();
 
-var Subject = require('./models/subject').Subject;
-
 app.configure(function(){
     app.use(express.methodOverride());
     app.use(express.bodyParser());
@@ -11,12 +9,12 @@ app.configure(function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
+var Subject = require('./models/subject').Subject;
 var subject = new Subject();
 
-app.get('/', function(){
-	var self = this;
+app.get('/', function(request, response){
 	subject.findAll(function(error, docs) {
-		self.halt(200, require('sys').inspect(docs));
+		response.render(200, require('sys').inspect(docs));
 	});
 });
 
