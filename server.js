@@ -29,5 +29,4 @@ app.get('/', function(){
 	});
 });
 
-run();
-//app.listen(process.env.PORT || 8001);
+app.listen(process.env.PORT || 8001);
