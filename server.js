@@ -30,12 +30,13 @@ app.get('/subject/:id', function(req, res, next) {
 });
 
 app.post('/subject/new', function(req, res) {
-	console.log(req);
+	console.log(req.params);
+	console.log('this: ' + this)
 	subject.save({
 		name: 'Billy Bob',
 		rating: 3.7
 	}, function(error, subjects) {
-		res.redirect('/');
+		res.redirect('/subject/1');
 	});
 });
 
