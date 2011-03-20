@@ -1,0 +1,17 @@
+!!! 5
+html
+    head
+        meta( charset: 'utf-8' )
+        meta( http-equiv: 'X-UA-Compatible', content: 'IE=edge,chrome=1' )
+        meta( name: 'viewport', content: 'width=800,initial-scale=1' )
+        title Quorum
+        link( rel: 'stylesheet', href: '/stylesheets/application.css' )
+        :text
+            <script>_gaq = [['_setAccount', 'UA-16773586-1'], ['_trackPageview']];</script>
+            <script async src="//www.google-analytics.com/ga.js"></script>
+    body
+        != body
+        - if (this.development)
+            script(src: '/javascripts/jquery-1.5.1.js')
+        - else
+            script(src: '//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js')

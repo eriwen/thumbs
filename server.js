@@ -1,46 +1,39 @@
-var express = require('express');
-var app = express.createServer();
-
-var css = require('stylus')
-  , str = require('fs').readFileSync(__dirname + '/views/style.styl', 'utf8');
-
-css.render(str, { filename: 'views/style.styl' }, function(err, css){
-  if (err) throw err;
-  console.log(css);
-});
-
-app.set('view engine', 'jade');
-app.set('views', __dirname + '/views');
-
-app.configure(function(){
-    app.use(express.methodOverride());
-    app.use(express.bodyParser());
-    app.use(app.router);
-    app.use(express.static(__dirname + '/public'));
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
+var express = require('express'),
+     io = require('socket.io'),
+     util = require('util'),
+     pub = __dirname + '/public',
+     port = process.env.PORT || 8001;
 
 var Subject = require('./models/subject').Subject;
 var subject = new Subject();
 
-app.get('/', function(request, response) {
-	subject.findAll(function(error, subjects) {
-		response.render('index', {
-			layout: false,
-			locals: {
-				pageTitle: 'Do we have a quorum?',
-				subjects: subjects
-			}
-		});
-	});
-	response.end();
+var app = express.createServer();
+app.get('/', function(req, res) {
+     subject.findAll(function(error, subjects) {
+          res.render('index', {
+               layout: false,
+               locals: {
+                    pageTitle: 'Do we have a quorum?',
+                    subjects: subjects
+               }
+          });
+     });
+     response.end();
+     res.render('index');
+});
+app.listen(port);
+
+app.configure(function() {
+     app.use(require('stylus').middleware(pub));
+     app.use(express.logger());
+     app.set('views', __dirname + '/views');
+     app.set('view engine', 'jade');
 });
 
-/*app.get('/*.css', function(file) {
-	response.render(str, { 
-		layout: false,
-		filename: file + '.styl' 
-	});
-});*/
+app.configure('development', function() {
+     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+     app.use(express.static(pub));
+     app.set('view options', { scope: { development: true }});
+});
 
 app.listen(process.env.PORT || 8001);
