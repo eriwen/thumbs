@@ -16,7 +16,7 @@ app.use(express.methodOverride());
 
 app.get('/', site.index);
 
-app.all('/subjects', subject.list);
+app.all('/subject', subject.list);
 app.all('/subject/:id/:op?', subject.load);
 app.get('/subject/:id', subject.read);
 app.get('/subject/:id/read', subject.read);

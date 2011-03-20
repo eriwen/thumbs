@@ -26,14 +26,14 @@ exports.create = function(req, res) {
 };
 
 exports.read = function(req, res) {
-	res.render('subjects/read', {
+	res.render('subject/read', {
 		title: 'Subject: ' + req.subject.name,
 		subject: req.subject
 	});
 };
 
 exports.edit = function(req, res) {
-	res.render('subjects/edit', {
+	res.render('subject/edit', {
 		title: 'Editing subject: ' + req.subject.name,
 		subject: req.subject
 	});
