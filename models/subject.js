@@ -34,7 +34,10 @@ Subject.prototype.save = function(subjects, callback) {
 }
 
 new Subject().save([
-	{name: 'Fred Jean', rating: 10.0, notes: [{author: 'Eric Wendelin', note: 'JRubyist', rating: 3.0}]},
+	{name: 'Fred Jean', rating: 10.0, notes: [
+		{author: 'Eric Wendelin', note: 'JRubyist', rating: 3.0},
+		{author: 'Johnny Wey', note: 'Is a genius', rating: 9.0},
+	]},
 	{name: 'John Doe', rating: 5.4}
 ], function(error, subjects){});
 
