@@ -10,7 +10,7 @@ exports.list = function(req, res) {
 	res.render('subjects', { title: 'Subjects', subjects: subjects });
 };
 
-exports.create = function(req, res, next) {
+exports.load = function(req, res, next) {
 	var id = req.params.id;
 	req.subject = subjects[id];
 	if (req.subject) {
@@ -18,6 +18,11 @@ exports.create = function(req, res, next) {
 	} else {
 		next(new Error('cannot find subject ' + id));
 	}
+};
+
+exports.create = function(req, res) {
+	// TODO: create subject in subjects
+	res.redirect('back');
 };
 
 exports.read = function(req, res) {
@@ -44,4 +49,4 @@ exports.update = function(req, res) {
 exports.delete = function(req, res) {
 	// TODO: delete subject from subjects
 	res.redirect('back');
-}
+};
