@@ -34,8 +34,7 @@ app.get('/', function(request, response) {
 get('/*.css', function(file){
 	this.render(file + '.styl', { layout: false });
 	stylus.render(str, { filename: 'style.styl' }, function(err, css){
-	  if (err) throw err;
-	  console.log(css);
+		console.log(css);
 	});
 });
 
