@@ -6,5 +6,4 @@ h2#subject= subject.name
 	- if (subject.notes)
 		ul
 			- each note in subject.notes
-				li.note
-					note.note
+				li.note= note.note
