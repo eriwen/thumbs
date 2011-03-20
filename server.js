@@ -39,18 +39,11 @@ app.get('/subject/:id', function(req, res, next) {
 });
 
 app.post('/subject/create', function(req, res) {
+	console.log(req.body.name);
 	var newSubject = null;
 	subject.save([{name: req.body.name, rating: 3.4}], function(error, subject) {
-		newSubject = subject;
+		res.redirect('/');
 	});
-	
-    subject.findById(newSubject._id, function(err, subject) {
-        res.render('subject', {
-            locals: {
-                subject: subject
-            }
-        });
-    });
 });
 
 app.configure(function() {
