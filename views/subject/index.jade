@@ -3,5 +3,5 @@ ul#subjects
 	- each subject, id in subjects
 		li
 			a(href='/subject/' + id)= subject.name
-			a.edit(href: '/subject/' + id + '/edit') edit
+			a.edit(href: '/subject/' + id + '/update') update
 			a.delete(href: '/subject/' + id + '/delete') delete
