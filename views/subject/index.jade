@@ -1,7 +1,7 @@
 h2 Subject List
 ul#subjects
-	- each subject in subjects
+	- each subject, id in subjects
 		li
-			a(href='/subject/' + subject._id)= subject.name
-			a.edit(href: '/subject/' + subject.id + '/edit') edit
-			a.delete(href: '/subject/' + subject.id + '/delete') delete
+			a(href='/subject/' + id)= subject.name
+			a.edit(href: '/subject/' + id + '/edit') edit
+			a.delete(href: '/subject/' + id + '/delete') delete
