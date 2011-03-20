@@ -31,7 +31,7 @@ app.get('/', function(request, response) {
 	response.end();
 });
 
-get('/*.css', function(file){
+app.get('/*.css', function(file) {
 	stylus.render(str, { filename: file + 'style.styl' }, function(err, css){
 		console.log(css);
 	});
