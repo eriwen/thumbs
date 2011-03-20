@@ -18,17 +18,22 @@ app.get('/', function(req, res) {
     res.end();
 });
 
-app.get('/subject/:id', function(req, res, next) {
+app.get('/subject/:id(\d+)', function(req, res, next) {
 	subject.findById(req.params.id, function(err, subject) {
 		if (err) return next(err);
-		res.render('subject');
+		res.render('subject', {
+			locals: {
+				subject: subject
+			}
+		});
+		
 	});
 });
 
 app.post('/subject/new', function(req, res) {
-	console.log(req.body);
+	console.log(req);
 	subject.save({
-		name: req.body.name,
+		name: 'Billy Bob',
 		rating: 3.7
 	}, function(error, subjects) {
 		res.redirect('/');
