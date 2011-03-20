@@ -1,10 +1,10 @@
 h2 Add Subject
-form#add_subject(method: 'post', action: '/subject/new')
+form#add_subject(method: 'post', action: '/subject/create')
 	p
 		| Create a new subject
 	label Name:
-		input(type: 'text', name: 'subject[name]', id: 'subject_name')
-	input(type: 'submit', value: 'Create Subject')
+		input(type: 'text', name: 'name')
+	input(type: 'submit', name: 'create', value: 'Create Subject')
 
 h2 Subject List
 ul#subjects

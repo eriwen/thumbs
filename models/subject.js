@@ -27,7 +27,6 @@ Subject.prototype.save = function(subjects, callback) {
 		if (!subject.notes) {
 			subject.notes = [];
 		}
-		console.log('new subject: ' + subject);
 		this.dummyData.push(subject);
 	}
 	

@@ -28,9 +28,8 @@ app.get('/subject/:id', function(req, res, next) {
 	});
 });
 
-app.post('/subject/new', function(req, res) {
-	console.log('Name: ' + req.param('name'));
-	subject.save([{name: 'Billy Bob'}], function(error, subjects) {
+app.post('/subject/create', function(req, res) {
+	subject.save([{name: req.param('name')}], function(error, subjects) {
 		res.redirect('/');
 	});
 });
