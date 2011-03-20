@@ -25,16 +25,12 @@ app.get('/subject/:id', function(req, res, next) {
 				subject: subject
 			}
 		});
-		
 	});
 });
 
 app.post('/subject/new', function(req, res) {
-	console.log(req.subject);
-	subject.save({
-		name: 'Billy Bob',
-		rating: 3.7
-	}, function(error, subjects) {
+	console.log('Name: ' + req.param('name'));
+	subject.save([{name: 'Billy Bob'}], function(error, subjects) {
 		res.redirect('/');
 	});
 });
