@@ -1,6 +1,4 @@
 var express = require('express'),
-     io = require('socket.io'),
-     util = require('util'),
      pub = __dirname + '/public',
      port = process.env.PORT || 8001;
 
