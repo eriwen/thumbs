@@ -29,15 +29,15 @@ app.get('/subject/:id', function(req, res, next) {
 });
 
 app.post('/subject/create', function(req, res) {
+	var newSubject = null;
 	subject.save([{name: req.param('name')}], function(error, subject) {
-		console.log(subject);
+		newSubject = subject;
 	});
 	
-    subject.findAll(function(error, subjects) {
-        res.render('index', {
+    subject.findById(newSubject._id, function(err, subject) {
+        res.render('subject', {
             locals: {
-                pageTitle: 'New user created',
-                subjects: subjects
+                subject: subject
             }
         });
     });
