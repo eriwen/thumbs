@@ -1,6 +1,9 @@
 h2 Add Subject
 form#add_subject(method: 'post', action: '/subject/new')
-	input(type: 'text', name: 'subject[name]', id: 'subject_name')
+	p
+		| Create a new subject
+	label Name:
+		input(type: 'text', name: 'subject[name]', id: 'subject_name')
 	input(type: 'submit', value: 'Create Subject')
 
 h2 Subject List
@@ -8,6 +11,6 @@ ul#subjects
 	- each subject in subjects
 		li
 			input(type: 'checkbox', name: 'subject_id')
-			strong.name= subject.name
-			span.rating= subject.rating
+			a(href='/subject/' + subject._id)= subject.name
+			span.rating= " " + subject.rating
 			
