@@ -17,9 +17,7 @@ app.get('/', function(req, res) {
           });
      });
      response.end();
-     res.render('index');
 });
-app.listen(port);
 
 app.configure(function() {
      app.use(require('stylus').middleware(pub));
@@ -34,4 +32,4 @@ app.configure('development', function() {
      app.set('view options', { scope: { development: true }});
 });
 
-app.listen(process.env.PORT || 8001);
+app.listen(port);
