@@ -6,6 +6,16 @@ var Subject = require('./models/subject').Subject;
 var subject = new Subject();
 
 var app = express.createServer();
+// Here we use the bodyDecoder middleware
+// to parse urlencoded request bodies
+// which populates req.body
+app.use(express.bodyParser());
+    
+// The methodOverride middleware allows us
+// to set a hidden input of _method to an arbitrary
+// HTTP method to support app.put(), app.del() etc
+app.use(express.methodOverride());
+
 app.get('/', function(req, res) {
     subject.findAll(function(error, subjects) {
         res.render('index', {
@@ -31,7 +41,7 @@ app.get('/subject/:id', function(req, res, next) {
 app.post('/subject/create', function(req, res) {
 	console.log(req.body);
 	var newSubject = null;
-	subject.save([{name: req.param('name')}], function(error, subject) {
+	subject.save([{name: req.param('name'), rating: 3.4}], function(error, subject) {
 		newSubject = subject;
 	});
 	
@@ -48,8 +58,7 @@ app.configure(function() {
     app.use(require('stylus').middleware(pub));
     app.use(express.logger({ format: ':method :uri' }));
 	// For POST requests
-	app.use(express.bodyParser());
-	app.use(express.bodyDecoder());
+	// app.use(express.bodyParser());
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
 });
