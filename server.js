@@ -30,8 +30,7 @@ app.get('/subject/:id', function(req, res, next) {
 });
 
 app.post('/subject/new', function(req, res) {
-	console.log(req.params);
-	console.log('this: ' + this)
+	console.log('this: ' + require('sys').inspect(this));
 	subject.save({
 		name: 'Billy Bob',
 		rating: 3.7
