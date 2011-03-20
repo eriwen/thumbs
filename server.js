@@ -29,13 +29,18 @@ app.get('/subject/:id', function(req, res, next) {
 });
 
 app.post('/subject/create', function(req, res) {
-	subject.save([{name: req.param('name')}], function(error, subjects) {
-		res.render('index', {
-			locals: {
-				subjects: subjects
-			}
-		});
+	subject.save([{name: req.param('name')}], function(error, subject) {
+		console.log(subject);
 	});
+	
+    subject.findAll(function(error, subjects) {
+        res.render('index', {
+            locals: {
+                pageTitle: 'New user created',
+                subjects: subjects
+            }
+        });
+    });
 });
 
 app.configure(function() {
