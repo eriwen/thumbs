@@ -23,7 +23,7 @@ app.get('/subject/:id/read', subject.read);
 app.post('/subject/:id/create', subject.create);
 app.get('/subject/:id/update', subject.edit);
 app.put('/subject/:id/update', subject.update);
-app.del('/subject/:id/delete', subject.delete);
+app.get('/subject/:id/delete', subject.delete);
 
 // app.post('/vote/:id/create', vote.create);
 

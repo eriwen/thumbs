@@ -2,6 +2,6 @@ h2 Subject List
 ul#subjects
 	- each subject in subjects
 		li
-			input(type: 'checkbox', name: 'subject_id')
 			a(href='/subject/' + subject._id)= subject.name
 			a.edit(href: '/subject/' + subject.id + '/edit') edit
+			a.delete(href: '/subject/' + subject.id + '/delete') delete
