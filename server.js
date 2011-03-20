@@ -1,8 +1,13 @@
 var express = require('express');
 var app = express.createServer();
-var stylus = require('stylus');
 
-var str = require('fs').readFileSync(__dirname + '/views/style.styl', 'utf8');
+var css = require('stylus')
+  , str = require('fs').readFileSync(__dirname + '/views/style.styl', 'utf8');
+
+css.render(str, { filename: 'views/style.styl' }, function(err, css){
+  if (err) throw err;
+  console.log(css);
+});
 
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
@@ -31,11 +36,11 @@ app.get('/', function(request, response) {
 	response.end();
 });
 
-app.get('/*.css', function(file) {
+/*app.get('/*.css', function(file) {
 	response.render(str, { 
 		layout: false,
 		filename: file + '.styl' 
 	});
-});
+});*/
 
 app.listen(process.env.PORT || 8001);
