@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
             }
         });
     });
-    response.end();
+    res.end();
 });
 
 app.post('/subject/new', function(req, res) {
