@@ -7,7 +7,7 @@ var subjects = [
 ];
 
 exports.list = function(req, res) {
-	res.render('subjects', { title: 'Subjects', subjects: subjects });
+	res.render('subject', { title: 'Subjects', subjects: subjects });
 };
 
 exports.load = function(req, res, next) {
