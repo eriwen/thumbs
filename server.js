@@ -26,9 +26,9 @@ app.get('/subject/:id', function(req, res, next) {
 });
 
 app.post('/subject/new', function(req, res) {
-	console.log(req.body.subject);
+	console.log(req.body);
 	subject.save({
-		name: req.body.subject.name,
+		name: req.body.name,
 		rating: 3.7
 	}, function(error, subjects) {
 		res.redirect('/');
