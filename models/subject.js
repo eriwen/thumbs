@@ -27,6 +27,7 @@ Subject.prototype.save = function(subjects, callback) {
 		if (!subject.notes) {
 			subject.notes = [];
 		}
+		console.log('new subject: ' + subject);
 		this.dummyData.push(subject);
 	}
 	
@@ -34,7 +35,7 @@ Subject.prototype.save = function(subjects, callback) {
 }
 
 new Subject().save([
-	{name: 'Fred Jean', rating: 10.0, notes: [{author: 'Eric Wendelin', note: 'JRubyist'}]},
+	{name: 'Fred Jean', rating: 10.0, notes: [{author: 'Eric Wendelin', note: 'JRubyist', rating: 3.0}]},
 	{name: 'John Doe', rating: 5.4}
 ], function(error, subjects){});
 
