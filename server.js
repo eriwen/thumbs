@@ -15,10 +15,9 @@ app.get('/', function(req, res) {
             }
         });
     });
-    res.end();
 });
 
-app.get('/subject/:id(\d+)', function(req, res, next) {
+app.get('/subject/:id', function(req, res, next) {
 	subject.findById(req.params.id, function(err, subject) {
 		if (err) return next(err);
 		res.render('subject', {
