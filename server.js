@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
     });
     res.end();
 });
-/*
+
 app.get('/subject/:id', function(req, res, next) {
 	subject.findById(req.params.id, function(err, subject) {
 		if (err) return next(err);
@@ -33,7 +33,7 @@ app.post('/subject/new', function(req, res) {
 	}, function(error, subjects) {
 		res.redirect('/');
 	});
-});*/
+});
 
 app.configure(function() {
     app.use(require('stylus').middleware(pub));
