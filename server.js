@@ -30,7 +30,11 @@ app.get('/subject/:id', function(req, res, next) {
 
 app.post('/subject/create', function(req, res) {
 	subject.save([{name: req.param('name')}], function(error, subjects) {
-		res.render('index');
+		res.render('index', {
+			locals: {
+				subjects: subjects
+			}
+		});
 	});
 });
 
