@@ -12,7 +12,6 @@ ul#subjects
 		li
 			input(type: 'checkbox', name: 'subject_id')
 			a(href='/subject/' + subject._id)= subject.name
-			:conditionals
-				if subject.rating?
-					span.rating= " " + subject.rating
+			if subject.rating?
+				span.rating= " " + subject.rating
 			
