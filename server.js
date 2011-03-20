@@ -9,7 +9,6 @@ var app = express.createServer();
 app.get('/', function(req, res) {
      subject.findAll(function(error, subjects) {
           res.render('index', {
-               layout: false,
                locals: {
                     pageTitle: 'Do we have a quorum?',
                     subjects: subjects
