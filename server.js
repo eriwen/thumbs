@@ -29,6 +29,7 @@ app.get('/subject/:id', function(req, res, next) {
 });
 
 app.post('/subject/create', function(req, res) {
+	console.log(req.body);
 	var newSubject = null;
 	subject.save([{name: req.param('name')}], function(error, subject) {
 		newSubject = subject;
@@ -45,9 +46,10 @@ app.post('/subject/create', function(req, res) {
 
 app.configure(function() {
     app.use(require('stylus').middleware(pub));
-    app.use(express.logger());
+    app.use(express.logger({ format: ':method :uri' }));
 	// For POST requests
 	app.use(express.bodyParser());
+	app.use(express.bodyDecoder());
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
 });
