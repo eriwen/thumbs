@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
 
 app.post('/subject/new', function(req, res) {
 	subject.save({
-		name: this.param('name')
+		name: this.param('name'),
 		rating: 3.7
 	}, function(error, subjects) {
 		res.redirect('/')
