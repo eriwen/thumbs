@@ -18,20 +18,28 @@ app.get('/', function(req, res) {
     res.end();
 });
 
+app.get('/subject/:id', function(req, res, next){
+	subject.findById(req.params.id, function(err, subject){
+		if (err) return next(err);
+		res.render('subject');
+	});
+});
+
 app.post('/subject/new', function(req, res) {
+	console.log(req.body.subject)
 	subject.save({
-		name: this.param('name'),
+		name: req.body.subject.name,
 		rating: 3.7
 	}, function(error, subjects) {
 		res.redirect('/')
 	});
 });
 
-// TODO: get subject by id
-
 app.configure(function() {
     app.use(require('stylus').middleware(pub));
     app.use(express.logger());
+	// For POST requests
+	app.use(express.bodyParser());
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
 });
