@@ -1,0 +1,9 @@
+h1= Editing subject.name
+#subject
+	form(method: 'post')
+		input(type: 'hidden', name: '_method', value: 'put')
+		p
+			| Create a new subject
+		label Name:
+			input(type: 'text', name: 'subject[name]', value: subject.name)
+		input(type: 'submit', value: 'Edit Subject')

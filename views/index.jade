@@ -1,17 +1,4 @@
-h2 Add Subject
-form#add_subject(method: 'post', action: '/subject/create')
-	p
-		| Create a new subject
-	label Name:
-		input(type: 'text', name: 'name')
-	input(type: 'submit', value: 'Create Subject')
-
-h2 Subject List
-ul#subjects
-	- each subject in subjects
-		li
-			input(type: 'checkbox', name: 'subject_id')
-			a(href='/subject/' + subject._id)= subject.name
-			- if (subject.rating)
-				span.rating= " " + subject.rating
+ul
+	li
+		a(href: '/subjects') subject list
 			
