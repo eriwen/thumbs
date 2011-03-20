@@ -10,13 +10,24 @@ app.get('/', function(req, res) {
     subject.findAll(function(error, subjects) {
         res.render('index', {
             locals: {
-                pageTitle: 'Do we have a quorum?',
+                pageTitle: 'Quorum',
                 subjects: subjects
             }
         });
     });
     response.end();
 });
+
+app.post('/subject/new', function(req, res) {
+	subject.save({
+		name: this.param('name')
+		rating: 3.7
+	}, function(error, subjects) {
+		res.redirect('/')
+	});
+});
+
+// TODO: get subject by id
 
 app.configure(function() {
     app.use(require('stylus').middleware(pub));
