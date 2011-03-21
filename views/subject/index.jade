@@ -1,3 +1,8 @@
+h2 Create Subject
+	form(method: 'post', action: '/subject/create')
+		input(type: 'hidden', name: '_method', value: 'put')
+		input(type: 'text', name: 'subject[name]')
+
 h2 Subject List
 ul#subjects
 	- each subject, id in subjects
