@@ -23,9 +23,9 @@ app.use(express.methodOverride());
 app.get('/', site.index);
 
 app.all('/subject', subject.list);
+app.put('/subject/create', subject.create);
 app.get('/subject/:id', subject.read);
 app.get('/subject/:id/read', subject.read);
-app.put('/subject/:id/create', subject.create);
 app.get('/subject/:id/update', subject.edit);
 app.post('/subject/:id/update', subject.update);
 app.get('/subject/:id/delete', subject.delete);
