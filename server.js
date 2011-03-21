@@ -12,7 +12,11 @@ function compileCss(str, path, compress, fn) {
 	stylus(str).set('filename', path).set('compress', compress).render(fn);
 }
 
-app.use(stylus.middleware({src: pub + '/stylesheets', dest: pub, compile: compileCss}));
+app.use(stylus.middleware({
+	src: pub + '/stylesheets',
+	dest: pub + '/stylesheets',
+	compile: compileCss
+}));
 app.set('views', views);
 app.set('view engine', 'jade');
 app.use(express.logger());
