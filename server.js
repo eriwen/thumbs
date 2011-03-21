@@ -13,11 +13,11 @@ function compileCss(str, path, fn) {
 }
 
 app.use(stylus.middleware({
-	src: pub + '/stylesheets',
-	dest: pub + '/stylesheets',
+	src: __dirname + '/views');,
+	dest: __dirname + '/public');,
 	compile: compileCss
 }));
-app.set('views', views);
+app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.logger());
 // NOTE: must include there here and NOT in app.config or req.body will always be undefined!
