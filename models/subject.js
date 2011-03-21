@@ -21,7 +21,7 @@ exports.load = function(req, res, next) {
 };
 
 exports.create = function(req, res) {
-	// TODO: create subject in subjects
+	subjects.push({name: req.body.name});
 	res.redirect('back');
 };
 
@@ -48,5 +48,7 @@ exports.update = function(req, res) {
 
 exports.delete = function(req, res) {
 	// TODO: delete subject from subjects
+	console.log(req.body);
+	// delete subjects[req.body.subject.id];
 	res.redirect('back');
 };

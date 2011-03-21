@@ -8,11 +8,14 @@ var express = require('express'),
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(require('stylus').middleware(pub));
 app.use(express.logger());
 // NOTE: must include there here and NOT in app.config or req.body will always be undefined!
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+
+app.configure(function() {
+	app.use(require('stylus').middleware(pub));
+});
 
 app.get('/', site.index);
 
