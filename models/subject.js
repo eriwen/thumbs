@@ -11,8 +11,8 @@ exports.list = function(req, res) {
 };
 
 exports.create = function(req, res) {
-	console.log(req.body);
-	subjects.push({name: req.body.subject.name});
+	console.log('body: ' + req.body);
+	subjects.push({name: req.body.name});
 	res.redirect('back');
 };
 
