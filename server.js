@@ -8,15 +8,16 @@ var express = require('express'),
 	site = require('./site'),
     port = process.env.PORT || 8001;
 
-function compileCss(str, path, fn) {
+function compile(str, path, fn) {
 	stylus(str).set('filename', path).set('compress', false).render(fn);
 }
 
 app.use(stylus.middleware({
 	src: __dirname + '/views',
 	dest: __dirname + '/public',
-	compile: compileCss
+	compile: compile
 }));
+app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.logger());
