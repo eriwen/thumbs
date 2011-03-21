@@ -10,16 +10,6 @@ exports.list = function(req, res) {
 	res.render('subject', { title: 'Subjects', subjects: subjects });
 };
 
-exports.load = function(req, res, next) {
-	var id = req.params.id;
-	req.subject = subjects[id];
-	if (req.subject) {
-		next();
-	} else {
-		next(new Error('cannot find subject ' + id));
-	}
-};
-
 exports.create = function(req, res) {
 	subjects.push({name: req.body.name});
 	res.redirect('back');
