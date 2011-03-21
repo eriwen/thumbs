@@ -8,8 +8,8 @@ var express = require('express'),
 	site = require('./site'),
     port = process.env.PORT || 8001;
 
-function compileCss(str, path, compress, fn) {
-	stylus(str).set('filename', path).set('compress', compress).render(fn);
+function compileCss(str, path, fn) {
+	stylus(str).set('filename', path).set('compress', false).render(fn);
 }
 
 app.use(stylus.middleware({
