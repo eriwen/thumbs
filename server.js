@@ -13,8 +13,8 @@ function compileCss(str, path, fn) {
 }
 
 app.use(stylus.middleware({
-	src: __dirname + '/views');,
-	dest: __dirname + '/public');,
+	src: __dirname + '/views',
+	dest: __dirname + '/public',
 	compile: compileCss
 }));
 app.set('views', __dirname + '/views');
