@@ -11,22 +11,23 @@ exports.list = function(req, res) {
 };
 
 exports.create = function(req, res) {
-	console.log('body: ' + req.body);
-	subjects.push({name: req.body.name});
+	subjects.push({name: req.body.subject.name});
 	res.redirect('back');
 };
 
 exports.read = function(req, res) {
+	var subject = subjects[req.params.id];
 	res.render('subject/read', {
-		title: 'Subject: ' + req.subject.name,
-		subject: req.subject
+		title: 'Subject: ' + subject.name,
+		subject: subject
 	});
 };
 
 exports.edit = function(req, res) {
+	var subject = subjects[req.params.id];
 	res.render('subject/edit', {
-		title: 'Editing subject: ' + req.subject.name,
-		subject: req.subject
+		title: 'Editing subject: ' + subject.name,
+		subject: subject
 	});
 };
 
@@ -38,8 +39,6 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-	// TODO: delete subject from subjects
-	console.log(req.body);
-	// delete subjects[req.body.subject.id];
+	subjects[req.params.id] = undefined;
 	res.redirect('back');
 };
