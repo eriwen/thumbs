@@ -33,8 +33,7 @@ exports.edit = function(req, res) {
 
 exports.update = function(req, res) {
 	// TODO: validation and DB insert
-	var subject = req.body.subject;
-	req.subject.name = subject.name;
+	subjects[req.params.id].name = req.body.subject.name;
 	res.redirect('back');
 };
 
