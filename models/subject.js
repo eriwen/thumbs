@@ -1,5 +1,5 @@
 var subjects = [
-	{name: 'Fred Jean', rating: 10.0, notes: [
+	{name: 'Fred Jean', rating: 8.0, notes: [
 		{author: 'Eric Wendelin', note: 'JRubyist', rating: 3.0},
 		{author: 'Johnny Wey', note: 'Is a genius', rating: 9.0},
 	]},

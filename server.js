@@ -8,14 +8,9 @@ var express = require('express'),
 	site = require('./site'),
     port = process.env.PORT || 8001;
 
-function compile(str, path, fn) {
-	stylus(str).set('filename', path).set('compress', false).render(fn);
-}
-
 app.use(stylus.middleware({
 	src: __dirname + '/views',
 	dest: __dirname + '/public',
-	compile: compile
 }));
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
@@ -28,7 +23,7 @@ app.use(express.methodOverride());
 app.get('/', site.index);
 
 app.all('/subject', subject.list);
-app.put('/subject/create', subject.create);
+app.post('/subject/create', subject.create);
 app.get('/subject/:id', subject.read);
 app.get('/subject/:id/read', subject.read);
 app.get('/subject/:id/update', subject.edit);
