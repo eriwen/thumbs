@@ -1,18 +1,17 @@
 var subjects = [
-	{name: 'Fred Jean', rating: 10.0, notes: [
-		{author: 'Eric Wendelin', note: 'JRubyist', rating: 3.0},
+	{name: 'Fred Jean', rating: 9.0, notes: [
 		{author: 'Johnny Wey', note: 'Is a genius', rating: 9.0}
 	]},
-	{name: 'John Doe', rating: 5.4, notes: []}
+	{name: 'John Doe', rating: 0.0, notes: []}
 ];
 
 function computeRating(subject) {
-	var notesLen = subject.notes.length,
+	var i = subject.notes.length,
 		total = 0.0;
-	if (notesLen == 0) {
+	if (i == 0) {
 		return total;
 	}
-	for(; i < notesLen; i++) {
+	for(; i >= 0; i--) {
 		total += subject.notes[i].rating;
 	}
 	return total / notesLen;
