@@ -6,7 +6,7 @@ var subjects = [
 ];
 
 function computeRating(subject) {
-	var i = subject.notes.length,
+	var i = subject.notes.length - 1,
 		total = 0.0;
 	if (i == 0) {
 		return total;
