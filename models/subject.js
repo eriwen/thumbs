@@ -8,13 +8,13 @@ var subjects = [
 function computeRating(subject) {
 	var i = subject.notes.length - 1,
 		total = 0.0;
-	if (i == 0) {
+	if (i < 0) {
 		return total;
 	}
 	for(; i >= 0; i--) {
 		total += subject.notes[i].rating;
 	}
-	return total / notesLen;
+	return total / i;
 }
 
 exports.list = function(req, res) {
