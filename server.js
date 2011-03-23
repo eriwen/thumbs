@@ -15,7 +15,7 @@ app.use(stylus.middleware({
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(express.logger());
+app.use(express.logger({ format: ':method :url :status' }));
 // NOTE: must include there here and NOT in app.config or req.body will always be undefined!
 app.use(express.bodyParser());
 app.use(express.methodOverride());

@@ -3,15 +3,27 @@ var subjects = [
 		{author: 'Eric Wendelin', note: 'JRubyist', rating: 3.0},
 		{author: 'Johnny Wey', note: 'Is a genius', rating: 9.0}
 	]},
-	{name: 'John Doe', rating: 5.4}
+	{name: 'John Doe', rating: 5.4, notes: []}
 ];
+
+function computeRating(subject) {
+	var notesLen = subject.notes.length,
+		total = 0.0;
+	if (notesLen == 0) {
+		return total;
+	}
+	for(; i < notesLen; i++) {
+		total += subject.notes[i].rating;
+	}
+	return total / notesLen;
+}
 
 exports.list = function(req, res) {
 	res.render('subject', { title: 'Subjects', subjects: subjects });
 };
 
 exports.create = function(req, res) {
-	subjects.push({name: req.body.subject.name});
+	subjects.push({name: req.body.subject.name, notes: []});
 	res.redirect('back');
 };
 
@@ -33,7 +45,10 @@ exports.edit = function(req, res) {
 
 exports.update = function(req, res) {
 	// TODO: validation and DB insert
-	subjects[req.params.id].name = req.body.subject.name;
+	var subject = subjects[req.params.id];
+	var bd = req.body;
+	subject.notes.push({rating: bd.rating, note: bd.note, author: bd.author});
+	subject.rating = computeRating(subject);
 	res.redirect('back');
 };
 
