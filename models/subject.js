@@ -6,15 +6,15 @@ var subjects = [
 ];
 
 function computeRating(subject) {
-	var i = subject.notes.length - 1,
+	var len = subject.notes.length,
 		total = 0.0;
-	if (i < 0) {
+	if (len == 0) {
 		return total;
 	}
-	for(; i >= 0; i--) {
+	for(var i = 0; i < len; i++) {
 		total += subject.notes[i].rating;
 	}
-	return total / i;
+	return total / len;
 }
 
 exports.list = function(req, res) {
@@ -44,7 +44,6 @@ exports.edit = function(req, res) {
 
 exports.update = function(req, res) {
 	// TODO: validation and DB insert
-	console.log(require('sys').inspect(req.body));
 	var subject = subjects[req.params.id];
 	var bd = req.body;
 	subject.notes.push({rating: bd.rating, note: bd.note, author: bd.author});
