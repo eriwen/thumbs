@@ -44,6 +44,7 @@ exports.edit = function(req, res) {
 
 exports.update = function(req, res) {
 	// TODO: validation and DB insert
+	console.log(require('sys').inspect(req.body));
 	var subject = subjects[req.params.id];
 	var bd = req.body;
 	subject.notes.push({rating: bd.rating, note: bd.note, author: bd.author});
