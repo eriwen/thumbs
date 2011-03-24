@@ -18,7 +18,6 @@ exports.list = function(req, res) {
 	});
 };
 
-
 exports.create = function(req, res) {
 	var subject = new Subject(req.body.subject);
 	subject.save(function(err) {

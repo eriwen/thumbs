@@ -24,10 +24,10 @@ app.use(express.session({ secret: 'thesecret' }));
 app.use(app.router);
 
 // Server error page
-/*app.error(function(err, req, res){
+app.error(function(err, req, res){
 	console.dir(err);
 	res.render('500');
-});*/
+});
 
 app.get('/', site.index);
 

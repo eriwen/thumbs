@@ -5,9 +5,8 @@ h2 New Subject
 
 h2 Subject List
 ul#subjects
-	- each subject, id in subjects
-		- if (typeof(subject) != 'undefined')
+	- each subject in subjects
 			li
-				a.read(href='/subject/' + id)= subject.name
-				a.edit(href: '/subject/' + id + '/update') update
-				a.delete(href: '/subject/' + id + '/delete') delete
+				a(href='/subject/' + subject._id) #{subject.name}
+				a.edit(href: '/subject/' + subject._id + '/update') update
+				a.delete(href: '/subject/' + subject._id + '/delete') delete
