@@ -1,4 +1,4 @@
-var Subject = require('../models/subject');
+var Subject = require('../models/subject').Subject;
 
 function computeRating(subject) {
 	var len = subject.notes.length,
