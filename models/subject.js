@@ -1,57 +1,14 @@
-var subjects = [
-	{name: 'Fred Jean', rating: 9.0, notes: [
-		{author: 'Johnny Wey', note: 'Is a genius', rating: 9.0}
-	]},
-	{name: 'John Doe', rating: 0.0, notes: []}
-];
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/subjectsdb');
+Schema = mongoose.Schema,
+ObjectId = Schema.ObjectId;
 
-function computeRating(subject) {
-	var len = subject.notes.length,
-		total = 0.0;
-	if (len == 0) {
-		return total;
-	}
-	for(var i = 0; i < len; i++) {
-		total += subject.notes[i].rating;
-	}
-	return total / len;
-}
+// Subject schema
 
-exports.list = function(req, res) {
-	res.render('subject', { title: 'Subjects', subjects: subjects });
-};
-
-exports.create = function(req, res) {
-	subjects.push({name: req.body.subject.name, notes: []});
-	res.redirect('back');
-};
-
-exports.read = function(req, res) {
-	var subject = subjects[req.params.id];
-	res.render('subject/read', {
-		title: 'Subject: ' + subject.name,
-		subject: subject
-	});
-};
-
-exports.edit = function(req, res) {
-	var subject = subjects[req.params.id];
-	res.render('subject/edit', {
-		title: 'Editing subject: ' + subject.name,
-		subject: subject
-	});
-};
-
-exports.update = function(req, res) {
-	// TODO: validation and DB insert
-	var subject = subjects[req.params.id];
-	var bd = req.body;
-	subject.notes.push({rating: bd.rating, note: bd.note, author: bd.author});
-	subject.rating = computeRating(subject);
-	res.redirect('back');
-};
-
-exports.delete = function(req, res) {
-	subjects[req.params.id] = undefined;
-	res.redirect('back');
-};
+var Subject = new Schema({
+	name: {type: String, default: '', required: true},
+	rating: {type: Number, default: 0}
+});
+  
+mongoose.model('Subject', Subject);
+var Subject = exports.Subject = mongoose.model('Subject');
