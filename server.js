@@ -3,6 +3,7 @@ var express = require('express'),
 	app = express.createServer(),
     pub = __dirname + '/public',
 	views = __dirname + '/views',
+	subject = require('./controllers/subject'),
 	site = require('./site'),
     port = process.env.PORT || 8001;
 
