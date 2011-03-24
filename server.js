@@ -34,9 +34,8 @@ app.get('/', site.index);
 app.all('/subject', subject.list);
 app.post('/subject/create', subject.create);
 app.get('/subject/:id', subject.read);
-/*app.get('/subject/:id/update', subject.edit);
+app.get('/subject/:id/update', subject.edit);
 app.post('/subject/:id/update', subject.update);
 app.del('/subject/:id', subject.delete);
-*/
 
 app.listen(port);
