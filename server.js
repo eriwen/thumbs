@@ -24,10 +24,10 @@ app.use(express.session({ secret: 'thesecret' }));
 app.use(app.router);
 
 // Server error page
-app.error(function(err, req, res){
+/*app.error(function(err, req, res){
 	console.dir(err);
 	res.render('500');
-});
+});*/
 
 app.get('/', site.index);
 
@@ -37,7 +37,7 @@ app.get('/subject/:id', subject.read);
 app.get('/subject/:id/read', subject.read);
 app.get('/subject/:id/update', subject.edit);
 app.post('/subject/:id/update', subject.update);
-app.get('/subject/:id/delete', subject.delete);
+app.del('/subject/:id', subject.delete);
 */
 
 app.listen(port);
