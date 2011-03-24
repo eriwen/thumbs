@@ -23,6 +23,12 @@ app.use(express.session({ secret: 'thesecret' }));
 // app.use(express.compiler({ src: __dirname + '/views', enable: ['stylus'] }));
 app.use(app.router);
 
+// Server error page
+app.error(function(err, req, res){
+	console.dir(err);
+	res.render('500');
+});
+
 app.get('/', site.index);
 
 app.all('/subject', subject.list);
