@@ -17,20 +17,26 @@ exports.list = function(req, res) {
 		res.render('subject', { title: 'Subjects', subjects: objs });
 	});
 };
-/*
+
+
 exports.create = function(req, res) {
-	subjects.push({name: req.body.subject.name, notes: []});
+	var subject = new Subject(req.body.subject);
+	subject.save(function(err) {
+		console.log("Created new subject");
+	});
 	res.redirect('back');
 };
 
 exports.read = function(req, res) {
-	var subject = subjects[req.params.id];
-	res.render('subject/read', {
-		title: 'Subject: ' + subject.name,
-		subject: subject
+	Subject.findOne({_id: req.params.id}, function(err, subject) {
+		res.render('subject/read', {
+			title: 'Subject: ' + subject.name,
+			subject: subject
+		});
 	});
 };
 
+/*
 exports.edit = function(req, res) {
 	var subject = subjects[req.params.id];
 	res.render('subject/edit', {
