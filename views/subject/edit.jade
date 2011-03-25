@@ -1,5 +1,5 @@
 h2= subject.name
-form(method: 'post', action: '/subject/' + subject._id)
+form(method: 'post', action: '/subject/' + subject._id + '/update')
 	p Add Note
 	label Rating:
 		input(type: 'text', name: 'rating')
