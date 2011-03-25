@@ -20,7 +20,6 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({ secret: 'thesecret' }));
-// app.use(express.compiler({ src: __dirname + '/views', enable: ['stylus'] }));
 app.use(app.router);
 
 // Server error page
@@ -31,11 +30,11 @@ app.error(function(err, req, res){
 
 app.get('/', site.index);
 
-app.get('/subject', subject.list);
-app.put('/subject', subject.create);
+app.all('/subject', subject.list);
+app.post('/subject/create', subject.create);
 app.get('/subject/:id', subject.read);
 app.get('/subject/:id/update', subject.edit);
-app.post('/subject/:id', subject.update);
-app.del('/subject/:id', subject.delete);
+app.post('/subject/:id/update', subject.update);
+app.get('/subject/:id/delete', subject.delete);
 
 app.listen(port);

@@ -48,9 +48,8 @@ exports.update = function(req, res) {
 	// TODO: validation
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
 		var bd = req.body;
-		// TODO: add notes to schema
-		// subject.notes.push({rating: bd.rating, note: bd.note, author: bd.author});
-		// subject.rating = computeRating(subject);
+		subject.notes.push({rating: bd.rating, note: bd.note, author: bd.author});
+		subject.rating = computeRating(subject);
 		subject.save(function(err) {
 			console.log(err);
 		});
