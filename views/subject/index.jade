@@ -1,5 +1,6 @@
 h2 New Subject
-	form(method: 'post', action: '/subject/create')
+	form(method: 'post', action: '/subject')
+		input(type: 'hidden', name: '_method', value: 'put')
 		input(type: 'text', name: 'subject[name]')
 		input(type: 'submit', value: 'Create')
 
@@ -9,4 +10,7 @@ ul#subjects
 			li
 				a(href='/subject/' + subject._id) #{subject.name}
 				a.edit(href: '/subject/' + subject._id + '/update') update
-				a.delete(href: '/subject/' + subject._id + '/delete') delete
+				form.delete(action: '/subject')
+					input(type: 'hidden', name: '_method', value: 'del')
+					input(type: 'hidden', name: 'id', value: subject._id)
+					input.delete(type: 'submit', value: 'Delete')
