@@ -2,6 +2,6 @@ ul.note
 	- each note in subject.notes
 		li.content= note
 
-form.addnote(method: 'post', action: '/subject/addnote')
+form.addnote(method: 'post', action: '/subject/' + subject._id + '/addnote')
 	input(type: 'text', name: 'content')
 	input(type: 'submit', value: 'Add Note')
