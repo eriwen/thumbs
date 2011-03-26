@@ -1,36 +1,29 @@
-border-image()
-	-webkit-border-image arguments
-	-moz-border-image arguments
-	border-image arguments
+border-radius()
+	-webkit-border-radius arguments
+	-moz-border-radius arguments
+	border-radius arguments
 
 body
 	font 16px helvetica, arial, sans-serif
 	color #333
 
-a
-	color #66F
-	text-decoration none
+#subjects
+	max-width 400px
+	margin 0px auto	
 
-h2
-	font-size 1.4em
-	color #00F
-
-#subjects li
+.subject
 	list-style-type none
 	margin-bottom 6px
+	background-color #DDF
+	border-radius(7px)
+	&:hover
+		background-color #DFD
 
-#subjects li span
-	width 150px
-
-#subjects a
-	margin 0px 10px
-	background-color #CCC
-	padding 2px 5px
-
-form#newsubject
+#newsubject
 	background-color #DDD
 	max-width 400px
 	margin 0px auto
+	border-radius(7px)
 	
 form input
 	padding 5px
