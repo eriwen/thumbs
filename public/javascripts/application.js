@@ -39,7 +39,7 @@ $(document).ready(function() {
 		starOn: 'star-on-big.png'
 	};
 	
-	$('.stars').each(function(el) {
-		el.raty(ratyOptions);
+	$('.stars').each(function() {
+		$(this).raty(ratyOptions);
 	});
 });
