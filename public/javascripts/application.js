@@ -27,7 +27,7 @@ $(document).ready(function() {
 		path: '../images',
 		size: 32,
 		click: submitRating,
-		width: 320,
+		width: 310,
 		// TODO: custom stars (larger)
 		cancelOff: 'cancel-off-big.png',
 		cancelOn: 'cancel-on-big.png',
