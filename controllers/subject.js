@@ -35,12 +35,22 @@ exports.read = function(req, res) {
 	});
 };
 
-exports.update = function(req, res) {
-	// TODO: validation
+exports.rate = function(req, res) {
+	Subject.findOne({_id: req.params.id}, function(err, subject) {
+		// TODO: get all ratings and average
+		// subject.notes.push(req.body.note);
+		// subject.rating = computeRating(subject);
+		subject.save(function(err) {
+			console.log(err);
+		});
+	});
+	// TODO: return JSON containing rating
+};
+
+exports.note = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
 		var bd = req.body;
-		subject.notes.push({note: bd.note, author: bd.author});
-		// subject.rating = computeRating(subject);
+		subject.notes.push({content: bd.note});
 		subject.save(function(err) {
 			console.log(err);
 		});

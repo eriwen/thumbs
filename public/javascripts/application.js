@@ -17,15 +17,29 @@ $(document).ready(function() {
 	
 	subjects.click(clickSubject);
 	
-	$('.stars').raty({
+	function submitRating() {
+		var self = $(this);
+		debugger;
+		// $.post('/subject/' + self.parent('') + '/rate', '')
+		// TODO: prevent duplicate votes
+		// TODO: show rating
+		// TODO: make this rating read-only
+	}
+	
+	var ratyOptions = {
 		half: true,
 		path: '../images',
 		size: 24,
-		click: null,
+		click: submitRating,
+		width: 170,
 		cancelOff: 'cancel-off-big.png',
 		cancelOn: 'cancel-on-big.png',
 		starHalf: 'star-half-big.png',
 		starOff: 'star-off-big.png',
 		starOn: 'star-on-big.png'
+	};
+	
+	$('.stars').each(function(el) {
+		el.raty(ratyOptions);
 	});
 });

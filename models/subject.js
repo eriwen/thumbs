@@ -3,16 +3,11 @@ mongoose.connect('mongodb://localhost/mydb');
 var Schema = mongoose.Schema,
 	ObjectId = Schema.ObjectId;
 
-// Subject can have 0..n Notes
-var Note = new Schema({
-	author: String,
-	content: String
-});
-
 var Subject = new Schema({
 	name: {type: String, default: '', required: true},
 	rating: {type: Number, default: 0},
-	notes: [Note],
+	ratings: [Number],
+	notes: [String],
 	archived: {type: Boolean, default: false}
 });
   
