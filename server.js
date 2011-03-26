@@ -29,8 +29,8 @@ app.use(app.router);
 app.get('/', subject.list);
 app.post('/subject/create', subject.create);
 app.get('/subject/:id', subject.read);
-app.post('/subject/:id/rate', subject.update);
-app.post('/subject/:id/note', subject.update);
+app.post('/subject/:id/rate', subject.rate);
+app.post('/subject/:id/note', subject.note);
 app.get('/subject/:id/delete', subject.delete);
 
 app.listen(port);
