@@ -4,6 +4,9 @@ border-radius()
 	-moz-border-radius arguments
 	border-radius arguments
 
+// Variables
+max-width = 800px
+
 // Reset
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
 	margin 0
@@ -33,22 +36,25 @@ body
 	color #333
 
 #subjects
-	max-width 400px
+	max-width max-width
 	margin 0px auto
+	font-size 24px
 
 .subject
-	margin-bottom 6px
+	margin-bottom 5px
 	background-color #DDF
+	padding 5px
 	border-radius(7px)
 	&:hover
 		background-color #DFD
-
-.updatesubject
-	display inline-block
+	&.name
+		float left
+	&.stars
+		float right
 
 #newsubject
 	background-color #DDD
-	max-width 400px
+	max-width max-width
 	margin 0px auto
 	border-radius(7px)
 	

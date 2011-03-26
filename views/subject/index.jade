@@ -3,9 +3,9 @@ ul#subjects
 		- if (!subject.archived)
 			li.subject
 				form.updatesubject(method: 'post', action: '/subject/' + subject._id + '/update')
-					span.name #{subject.name}
-					span.stars Stars go here
-					a.delete(href: '/subject/' + subject._id + '/delete') archive
+					p
+						span.name #{subject.name}
+						span.stars Stars go here
 
 form#newsubject(method: 'post', action: '/subject/create')
 	input(type: 'text', name: 'subject[name]')
