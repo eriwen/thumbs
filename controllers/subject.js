@@ -14,7 +14,7 @@ function computeRating(subject) {
 
 exports.list = function(req, res) {
 	Subject.find({}, function(err, objs) {
-		res.render('subject', { title: 'Subjects', subjects: objs });
+		res.render('subject', { title: 'Thumbs', subjects: objs });
 	});
 };
 

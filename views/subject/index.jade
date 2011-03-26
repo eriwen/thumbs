@@ -5,8 +5,7 @@ ul#subjects
 				form.updatesubject(method: 'post', action: '/subject/' + subject._id + '/update')
 					span.name #{subject.name}
 					span.stars Stars go here
-					span
-						a.delete(href: '/subject/' + subject._id + '/delete') archive
+					a.delete(href: '/subject/' + subject._id + '/delete') archive
 
 form#newsubject(method: 'post', action: '/subject/create')
 	input(type: 'text', name: 'subject[name]')
