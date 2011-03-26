@@ -17,20 +17,19 @@ app.set('view engine', 'jade');
 app.use(express.logger({ format: ':method :url :status' }));
 // NOTE: must include there here and NOT in app.config or req.body will always be undefined!
 app.use(express.bodyParser());
-app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(express.session({ secret: 'thesecret' }));
 app.use(app.router);
 
 // Server error page
-app.error(function(err, req, res){
+/*app.error(function(err, req, res){
 	console.dir(err);
 	res.render('500');
-});
+});*/
 
 app.get('/', site.index);
 
-app.all('/subject', subject.list);
+app.all('/subjects', subject.list);
 app.post('/subject/create', subject.create);
 app.get('/subject/:id', subject.read);
 app.get('/subject/:id/update', subject.edit);
