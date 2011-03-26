@@ -27,9 +27,7 @@ app.use(app.router);
 	res.render('500');
 });*/
 
-app.get('/', site.index);
-
-app.all('/subjects', subject.list);
+app.get('/', subject.list);
 app.post('/subject/create', subject.create);
 app.get('/subject/:id', subject.read);
 app.post('/subject/:id/update', subject.update);
