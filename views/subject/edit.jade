@@ -1,10 +1,13 @@
-h2= subject.name
+h2= Add Note for subject.name
 form(method: 'post', action: '/subject/' + subject._id + '/update')
-	p Add Note
-	label Rating:
-		input(type: 'text', name: 'rating')
-	label Note:
-		textarea(name: 'note')
-	label Author:
-		input(type: 'text', name: 'author')
-	input(type: 'submit', value: 'Submit')
+	p
+		label Rating:
+			input(type: 'text', name: 'rating')
+	p
+		label Note:
+			textarea(name: 'note')
+	p
+		label Author:
+			input(type: 'text', name: 'author')
+	p
+		input(type: 'submit', value: 'Submit')

@@ -5,13 +5,13 @@ var Schema = mongoose.Schema,
 
 // Subject can have 0..n Notes
 var Note = new Schema({
-	author: {type: String, default: '', required: true},
-	rating: {type: Number, default: 0, required: true},
-	note: {type: String, default: ''}
+	author: String,
+	rating: Number,
+	note: String
 });
 
-mongoose.model('Note', Note);
-var Note = exports.Note = mongoose.model('Note');
+// mongoose.model('Note', Note);
+// var Note = exports.Note = mongoose.model('Note');
 
 var Subject = new Schema({
 	name: {type: String, default: '', required: true},
