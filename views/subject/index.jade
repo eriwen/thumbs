@@ -3,9 +3,8 @@ ul#subjects
 		- if (!subject.archived)
 			li.subject
 				form.updatesubject(method: 'post', action: '/subject/' + subject._id + '/update')
-					p
-						span.name #{subject.name}
-						span.stars Stars go here
+					span.name #{subject.name}
+					span.stars Stars go here
 					div.clear
 
 form#newsubject(method: 'post', action: '/subject/create')
