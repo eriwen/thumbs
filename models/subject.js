@@ -15,8 +15,8 @@ var Note = new Schema({
 
 var Subject = new Schema({
 	name: {type: String, default: '', required: true},
-	rating: {type: Number, default: 0}
-	// notes: [Note]
+	rating: {type: Number, default: 0},
+	notes: [Note]
 });
   
 mongoose.model('Subject', Subject);
