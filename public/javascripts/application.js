@@ -16,4 +16,16 @@ $(document).ready(function() {
 	}
 	
 	subjects.click(clickSubject);
+	
+	$('.stars').raty({
+		half: true,
+		path: '../images',
+		size: 24,
+		click: null,
+		cancelOff: 'cancel-off-big.png',
+		cancelOn: 'cancel-on-big.png',
+		starHalf: 'star-half-big.png',
+		starOff: 'star-off-big.png',
+		starOn: 'star-on-big.png'
+	});
 });
