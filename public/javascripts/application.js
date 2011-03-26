@@ -18,9 +18,7 @@ $(document).ready(function() {
 	subjects.click(clickSubject);
 	
 	function submitRating() {
-		var self = $(this);
-		debugger;
-		// $.post('/subject/' + self.parent('') + '/rate', '')
+		this.parent('form').first().submit();
 		// TODO: prevent duplicate votes
 		// TODO: show rating
 		// TODO: make this rating read-only

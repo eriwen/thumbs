@@ -1,13 +1,13 @@
 var Subject = require('../models/subject').Subject;
 
 function computeRating(subject) {
-	var len = subject.notes.length,
+	var len = subject.ratings.length,
 		total = 0.0;
 	if (len == 0) {
 		return total;
 	}
 	for(var i = 0; i < len; i++) {
-		total += subject.notes[i].rating;
+		total += subject.ratings[i].rating;
 	}
 	return total / len;
 }
@@ -37,11 +37,10 @@ exports.read = function(req, res) {
 
 exports.rate = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
-		// TODO: get all ratings and average
-		// subject.notes.push(req.body.note);
-		// subject.rating = computeRating(subject);
+		subject.ratings.push(parseInt(req.body.score));
+		subject.rating = computeRating(subject);
 		subject.save(function(err) {
-			console.log(err);
+			console.log('Saving rating');
 		});
 	});
 	// TODO: return JSON containing rating
