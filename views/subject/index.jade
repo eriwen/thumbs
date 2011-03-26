@@ -1,7 +1,7 @@
 ul#subjects
 	- each subject in subjects
 		- if (!subject.archived)
-			li.subject
+			li.subject(rel: subject._id)
 				form.updatesubject(method: 'post', action: '/subject/' + subject._id + '/update')
 					span.name #{subject.name}
 					span.stars Stars go here

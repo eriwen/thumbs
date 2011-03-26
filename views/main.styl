@@ -4,6 +4,12 @@ border-radius()
 	-moz-border-radius arguments
 	border-radius arguments
 
+transition()
+	-webkit-transition arguments
+	-moz-transition arguments
+	-o-transition arguments
+	transition arguments
+
 // Variables
 max-width = 800px
 create-form-height = 42px
@@ -23,10 +29,15 @@ body
 	&:hover
 		background-color #DFD
 		cursor pointer
+		transition(background-color .3s ease-in-out)
 	& .name
 		float left
 	& .stars
 		float right
+
+.active
+	background-color #FDD
+	transition(background-color .3s ease-in-out)
 
 .clear
 	clear both

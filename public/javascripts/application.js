@@ -1,9 +1,13 @@
 $(document).ready(function() {
-	$('.subject').click(function() {
-		console.log(this);
-		// Make AJAX request for '/subject/:id/read'
-		// Inject content into this
-		// Remove classname from everything
-		// Add classname to this
+	var subjects = $('.subject');
+	
+	subjects.click(function() {
+		var self = $(this);
+		subjects.removeClass('active');
+		self.addClass('active');
+		$.get('/subject/' + self.attr('rel'), function(data) {
+			self.append(data);
+			// TODO: rewrite function to just close
+		});
 	});	
 });
