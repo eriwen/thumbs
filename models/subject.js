@@ -4,11 +4,11 @@ var Schema = mongoose.Schema,
 	ObjectId = Schema.ObjectId;
 
 // Subject can have 0..n Notes
-/*var Note = new Schema({
+var Note = new Schema({
 	author: String,
 	rating: Number,
-	note: String
-});*/
+	content: String
+});
 
 // mongoose.model('Note', Note);
 // var Note = exports.Note = mongoose.model('Note');
