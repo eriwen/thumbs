@@ -1,12 +1,14 @@
-h2 New Subject
-	form(method: 'post', action: '/subject/create')
-		input(type: 'text', name: 'subject[name]')
-		input(type: 'submit', value: 'Create')
-
-h2 Subject List
+h2 Subjects
 ul#subjects
 	- each subject in subjects
+		- if (!subject.archived)
 			li
 				a(href='/subject/' + subject._id) #{subject.name}
-				a.edit(href: '/subject/' + subject._id + '/update') update
-				a.delete(href: '/subject/' + subject._id + '/delete') delete
+				form(method: 'post', action: '/subject/' + subject._id + '/update')
+					span Stars go here
+				a.delete(href: '/subject/' + subject._id + '/delete') archive
+
+h2 New Subject
+	form#newsubject(method: 'post', action: '/subject/create')
+		input(type: 'text', name: 'subject[name]')
+		input(type: 'submit', value: 'Create')

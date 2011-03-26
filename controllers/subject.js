@@ -35,15 +35,6 @@ exports.read = function(req, res) {
 	});
 };
 
-exports.edit = function(req, res) {
-	Subject.findOne({_id: req.params.id}, function(err, subject) {
-		res.render('subject/edit', {
-			title: 'Editing subject: ' + subject.name,
-			subject: subject
-		});
-	});
-};
-
 exports.update = function(req, res) {
 	// TODO: validation
 	Subject.findOne({_id: req.params.id}, function(err, subject) {

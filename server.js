@@ -32,7 +32,6 @@ app.get('/', site.index);
 app.all('/subjects', subject.list);
 app.post('/subject/create', subject.create);
 app.get('/subject/:id', subject.read);
-app.get('/subject/:id/update', subject.edit);
 app.post('/subject/:id/update', subject.update);
 app.get('/subject/:id/delete', subject.delete);
 
