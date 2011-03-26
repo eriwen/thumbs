@@ -8,29 +8,6 @@ border-radius()
 max-width = 800px
 create-form-height = 42px
 
-// Reset
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
-	margin 0
-	padding 0
-	border 0
-	font-size 100%
-	font inherit
-	vertical-align baseline
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
-	display block
-body
-	line-height 1
-ol, ul
-	list-style: none
-blockquote, q
-	quotes none
-blockquote:before, blockquote:after, q:before, q:after
-	content ''
-	content none
-table
-	border-collapse collapse
-	border-spacing 0
-
 // Main Styles
 body
 	font 24px helvetica, arial, sans-serif
@@ -57,15 +34,17 @@ body
 #newsubject
 	background-color #DDD
 	border-radius(7px)
-	height: create-form-height
+	padding 5px
 	& input[type=text]
-		width: 80%
+		vertical-align bottom
+		width 80%
 		// TODO: use variables here
-		height: 30px
+		height 37px
 	& input[type=submit]
-		width: 17%
-		height: create-form-height
-		margin-left: 10px
+		width 17%
+		height create-form-height
+		margin-left 10px
+		font-size 20px
 	
 form input
 	padding 5px
