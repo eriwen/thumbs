@@ -14,7 +14,10 @@ function computeRating(ratings) {
 
 exports.list = function(req, res) {
 	Subject.find({}, function(err, objs) {
-		res.render('subject', { title: 'Thumbs', subjects: objs });
+		res.render('subject', { 
+			title: 'Thumbs',
+			subjects: objs
+		});
 	});
 };
 
@@ -37,6 +40,7 @@ exports.read = function(req, res) {
 
 exports.rate = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
+		// TODO: allow float ratings
 		subject.ratings.push(parseInt(req.body.score));
 		subject.rating = computeRating(subject.ratings);
 		subject.save(function(err) {
@@ -48,8 +52,7 @@ exports.rate = function(req, res) {
 
 exports.note = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
-		var bd = req.body;
-		subject.notes.push({content: bd.note});
+		subject.notes.push(req.body.content);
 		subject.save(function(err) {
 			console.log(err);
 		});

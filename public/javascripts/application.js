@@ -19,13 +19,11 @@ $(document).ready(function() {
 	
 	function submitRating() {
 		this.parent('form').first().submit();
-		// TODO: prevent duplicate votes
 		// TODO: show rating
 		// TODO: make this rating read-only
 	}
 	
 	var ratyOptions = {
-		half: true,
 		path: '../images',
 		size: 24,
 		click: submitRating,

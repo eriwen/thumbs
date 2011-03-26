@@ -1,7 +1,6 @@
-- if (subject.notes)
-	ul.note
-		- each note in subject.notes
-			li.note= note.note
+ul.note
+	- each note in subject.notes
+		li.content= note
 
 form.addnote(method: 'post', action: '/subject/addnote')
 	input(type: 'text', name: 'content')
