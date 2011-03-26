@@ -25,9 +25,9 @@ $(document).ready(function() {
 	
 	var ratyOptions = {
 		path: '../images',
-		size: 24,
+		size: 32,
 		click: submitRating,
-		width: 170,
+		width: 220,
 		cancelOff: 'cancel-off-big.png',
 		cancelOn: 'cancel-on-big.png',
 		starHalf: 'star-half-big.png',
