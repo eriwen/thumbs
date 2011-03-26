@@ -6,14 +6,12 @@ $(document).ready(function() {
 		subjects.removeClass('active');
 		self.addClass('active');
 
-		$.get('/subject/' + self.attr('rel'), function(data) {
-			self.children('.detail').append(data);
-		});
-		
-		clickSubject = function() {
-			var self = $(this);
-			subjects.removeClass('active');
-			self.addClass('active');
+		var detail = self.children('.detail').first();
+		if (!detail.attr('loaded')) {
+			$.get('/subject/' + self.attr('rel'), function(data) {
+				self.children('.detail').append(data);
+			});
+			detail.attr('loaded', 'true');
 		}
 	}
 	
