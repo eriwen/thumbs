@@ -6,6 +6,7 @@ ul#subjects
 					p
 						span.name #{subject.name}
 						span.stars Stars go here
+					div.clear
 
 form#newsubject(method: 'post', action: '/subject/create')
 	input(type: 'text', name: 'subject[name]')
