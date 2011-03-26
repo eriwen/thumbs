@@ -28,7 +28,7 @@ exports.create = function(req, res) {
 
 exports.read = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
-		res.render('subject/read', {
+		res.partial('subject/read', {
 			title: 'Subject: ' + subject.name,
 			subject: subject
 		});

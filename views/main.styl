@@ -42,6 +42,19 @@ body
 .clear
 	clear both
 
+.addnote
+	padding 5px
+	& input[type=text]
+		vertical-align bottom
+		width 80%
+		// TODO: use variables here
+		height 37px
+	& input[type=submit]
+		width 17%
+		height create-form-height
+		margin-left 10px
+		font-size 20px
+
 #newsubject
 	background-color #DDD
 	border-radius(7px)
@@ -57,6 +70,6 @@ body
 		height create-form-height
 		margin-left 10px
 		font-size 20px
-	
+
 form input
 	border 1px solid
