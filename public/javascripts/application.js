@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	var subjects = $('.subject');
-	
-	function clickSubject() {
+	subjects.click(function() {
 		var self = $(this);
 		subjects.removeClass('active');
 		self.addClass('active');
@@ -13,9 +12,7 @@ $(document).ready(function() {
 			});
 			detail.attr('loaded', 'true');
 		}
-	}
-	
-	subjects.click(clickSubject);
+	});
 	
 	var ratyOptions = {
 		path: '../images',
@@ -36,8 +33,9 @@ $(document).ready(function() {
 		var postData = 'score=' + ratingStars.children('input').first().val();
 		$.post(ratingForm.attr('action'), postData, function(response) {
 			var newRating = $.parseJSON(response).r;
-			ratingStars.empty();
-			ratingStars.removeAttr('title');
+			ratingStars.delete();
+			ratingStars.removeAttr(['title', 'id']);
+			ratingStars.css({opacity: '0.75'});
 			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
 		});
 	}
