@@ -24,7 +24,7 @@ exports.list = function(req, res) {
 exports.create = function(req, res) {
 	var subject = new Subject(req.body.subject);
 	subject.save(function(err) {
-		console.log('Created new subject');
+		if (err) console.log(err);
 	});
 	res.redirect('back');
 };
@@ -39,23 +39,22 @@ exports.read = function(req, res) {
 };
 
 exports.rate = function(req, res) {
-	var totalRating;
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
 		subject.ratings.push(parseFloat(req.body.score));
-		totalRating = computeRating(subject.ratings);
-		subject.rating = totalRating;
+		subject.rating = computeRating(subject.ratings);
 		subject.save(function(err) {
-			console.log(err);
+			if (err) console.log(err);
 		});
+		res.partial('{r:' + subject.rating + '}');
 	});
-	res.send('{r:' + totalRating + '}');
+	// TODO: handle this case
 };
 
 exports.note = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
 		subject.notes.push(req.body.content);
 		subject.save(function(err) {
-			console.log(err);
+			if (err) console.log(err);
 		});
 	});
 	res.redirect('back');
@@ -64,7 +63,7 @@ exports.note = function(req, res) {
 exports.delete = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
 		subject.remove(function(err) {
-			console.log("Deleted subject");
+			if (err) console.log(err);
 		});
 	});
 	res.redirect('back');
