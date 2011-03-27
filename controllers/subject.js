@@ -39,15 +39,16 @@ exports.read = function(req, res) {
 };
 
 exports.rate = function(req, res) {
+	var totalRating;
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
-		// TODO: allow float ratings
-		subject.ratings.push(parseInt(req.body.score));
-		subject.rating = computeRating(subject.ratings);
+		subject.ratings.push(parseFloat(req.body.score));
+		totalRating = computeRating(subject.ratings);
+		subject.rating = totalRating;
 		subject.save(function(err) {
 			console.log(err);
 		});
 	});
-	res.redirect('back');
+	res.send(totalRating);
 };
 
 exports.note = function(req, res) {

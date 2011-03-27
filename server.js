@@ -7,7 +7,7 @@ var express = require('express'),
     port = process.env.PORT || 8001;
 
 app.use(stylus.middleware({
-	src: __dirname + '/views',
+	src: __dirname + '/public/stylesheets',
 	dest: __dirname + '/public'
 }));
 app.use(express.static(__dirname + '/public'));
