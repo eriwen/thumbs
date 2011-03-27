@@ -33,7 +33,7 @@ $(document).ready(function() {
 		var postData = 'score=' + ratingStars.children('input').first().val();
 		$.post(ratingForm.attr('action'), postData, function(response) {
 			var newRating = $.parseJSON(response).r;
-			ratingStars.delete();
+			ratingStars.empty();
 			ratingStars.removeAttr(['title', 'id']);
 			ratingStars.css({opacity: '0.75'});
 			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
