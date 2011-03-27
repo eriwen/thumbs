@@ -17,16 +17,6 @@ $(document).ready(function() {
 	
 	subjects.click(clickSubject);
 	
-	function submitRating() {
-		var ratingForm = this.parent('form').first();
-		var ratingStars = ratingForm.children('.stars').first();
-		var postData = 'stars=' + ratingStars.children('input').first().val();
-		$.post(ratingForm.attr('action'), postData, function(response) {
-			var newRating = $.parseJSON(response).r;
-			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
-		});
-	}
-	
 	var ratyOptions = {
 		path: '../images',
 		size: 32,
@@ -39,6 +29,16 @@ $(document).ready(function() {
 		starOff: 'star-off-big.png',
 		starOn: 'star-on-big.png'
 	};
+	
+	function submitRating() {
+		var ratingForm = this.parent('form').first();
+		var ratingStars = ratingForm.children('.stars').first();
+		var postData = 'score=' + ratingStars.children('input').first().val();
+		$.post(ratingForm.attr('action'), postData, function(response) {
+			var newRating = $.parseJSON(response).r;
+			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
+		});
+	}
 	
 	$('.stars').each(function() {
 		$(this).raty(ratyOptions);

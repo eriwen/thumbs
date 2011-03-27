@@ -56,8 +56,9 @@ exports.note = function(req, res) {
 		subject.save(function(err) {
 			if (err) console.log(err);
 		});
+		res.send('{n:"' + req.body.content + '}');
 	});
-	res.redirect('back');
+	// TODO: handle this case
 };
 
 exports.delete = function(req, res) {

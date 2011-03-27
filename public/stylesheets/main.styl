@@ -26,7 +26,7 @@ body
 	padding 5px
 	border-radius(7px)
 	&:hover
-		background-color #DFD
+		background-color #CCF
 		cursor pointer
 		transition(background-color .3s ease-in-out)
 	& .name
@@ -38,8 +38,10 @@ body
 	display none
 
 .active
-	background-color #FDD
+	background-color #DFD
 	transition(background-color .3s ease-in-out)
+	&:hover
+		background-color #DFD
 	& .detail
 		display block
 
@@ -49,6 +51,7 @@ body
 .name
 	display inline-block
 	width 640px
+	overflow ellipsis
 
 .stars img
 	padding 7px 10px
