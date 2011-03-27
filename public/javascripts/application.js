@@ -37,6 +37,7 @@ $(document).ready(function() {
 		$.post(ratingForm.attr('action'), postData, function(response) {
 			var newRating = $.parseJSON(response).r;
 			ratingStars.empty();
+			ratingStars.removeAttr('title');
 			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
 		});
 	}
