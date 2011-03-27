@@ -45,7 +45,7 @@ exports.rate = function(req, res) {
 		subject.save(function(err) {
 			if (err) console.log(err);
 		});
-		res.send('{r:' + subject.rating + '}');
+		res.send('{"r":' + subject.rating + '}');
 	});
 	// TODO: handle this case
 };
@@ -56,7 +56,7 @@ exports.note = function(req, res) {
 		subject.save(function(err) {
 			if (err) console.log(err);
 		});
-		res.send('{n:"' + req.body.content + '}');
+		res.send('{"n":"' + req.body.content + '}');
 	});
 	// TODO: handle this case
 };
