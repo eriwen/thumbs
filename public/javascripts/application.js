@@ -27,7 +27,7 @@ $(document).ready(function() {
 		starOn: 'star-on-big.png'
 	};
 	
-	function submitRating(event) {
+	function submitRating(score, evt) {
 		var ratingForm = this.parent('form').first();
 		var ratingStars = ratingForm.children('.stars').first();
 		var postData = 'score=' + ratingStars.children('input').first().val();
@@ -37,7 +37,7 @@ $(document).ready(function() {
 			ratingStars.css({opacity: '0.75'});
 			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
 		});
-		event.stopImmediatePropagation();
+		evt.stopImmediatePropagation();
 	}
 	
 	$('.stars').each(function() {
