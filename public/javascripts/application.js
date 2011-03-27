@@ -21,7 +21,7 @@ $(document).ready(function() {
 		path: '../images',
 		size: 32,
 		click: submitRating,
-		width: 310,
+		width: 280,
 		// TODO: custom stars (larger)
 		cancelOff: 'cancel-off-big.png',
 		cancelOn: 'cancel-on-big.png',
@@ -36,6 +36,7 @@ $(document).ready(function() {
 		var postData = 'score=' + ratingStars.children('input').first().val();
 		$.post(ratingForm.attr('action'), postData, function(response) {
 			var newRating = $.parseJSON(response).r;
+			ratingStars.empty();
 			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
 		});
 	}
