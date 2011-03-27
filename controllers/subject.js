@@ -48,7 +48,7 @@ exports.rate = function(req, res) {
 			console.log(err);
 		});
 	});
-	res.send(totalRating);
+	res.send('{r:' + totalRating + '}');
 };
 
 exports.note = function(req, res) {
