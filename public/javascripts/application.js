@@ -18,9 +18,13 @@ $(document).ready(function() {
 	subjects.click(clickSubject);
 	
 	function submitRating() {
-		this.parent('form').first().submit();
-		// TODO: show rating
-		// TODO: make this rating read-only
+		var ratingForm = this.parent('form').first();
+		var ratingStars = ratingForm.children('.stars').first();
+		var postData = 'stars=' + ratingStars.children('input').first().val();
+		$.post(ratingForm.attr('action'), postData, function(response) {
+			var newRating = $.parseJSON(response).r;
+			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
+		});
 	}
 	
 	var ratyOptions = {

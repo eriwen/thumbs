@@ -45,7 +45,7 @@ exports.rate = function(req, res) {
 		subject.save(function(err) {
 			if (err) console.log(err);
 		});
-		res.partial('{r:' + subject.rating + '}');
+		res.send('{r:' + subject.rating + '}');
 	});
 	// TODO: handle this case
 };
