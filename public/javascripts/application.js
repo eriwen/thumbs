@@ -47,8 +47,8 @@ $(document).ready(function() {
 	
 	function submitNewNote() {
 		postData = 'content=' + this.children('.note').first().val();
-		$.post(this.attr('action'), postData, function(response) {
-			this.siblings('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
+		$.post($(this).attr('action'), postData, function(response) {
+			$(this).siblings('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
 		});
 		return false;
 	}
