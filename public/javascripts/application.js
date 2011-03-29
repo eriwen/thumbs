@@ -8,7 +8,8 @@ $(document).ready(function() {
 		var detail = self.children('.detail').first();
 		if (!detail.attr('loaded')) {
 			$.get('/subject/' + self.attr('rel'), function(data) {
-				self.children('.detail').append(data);
+				detail.append(data);
+				detail.children('.addnote').submit(submitNewNote);
 			});
 			detail.attr('loaded', 'true');
 		}
@@ -47,10 +48,8 @@ $(document).ready(function() {
 	function submitNewNote() {
 		postData = 'content=' + this.children('.note').first().val();
 		$.post(this.attr('action'), postData, function(response) {
-			this.sibling('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
+			this.siblings('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
 		});
 		return false;
 	}
-	
-	$('.addnote').submit(submitNewNote);
 });
