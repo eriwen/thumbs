@@ -43,4 +43,14 @@ $(document).ready(function() {
 	$('.stars').each(function() {
 		$(this).raty(ratyOptions);
 	});
+	
+	function submitNewNote() {
+		postData = 'content=' + this.children('.note').first().val();
+		$.post(this.attr('action'), postData, function(response) {
+			this.sibling('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
+		});
+		return false;
+	}
+	
+	$('.addnote').submit(submitNewNote);
 });
