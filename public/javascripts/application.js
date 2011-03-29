@@ -46,10 +46,12 @@ $(document).ready(function() {
 	});
 	
 	function submitNewNote() {
-		var self = $(this);
-		postData = 'content=' + self.children('.note').first().val();
+		var self = $(this),
+			note = self.children('.note').first();
+		postData = 'content=' + note.val();
 		$.post(self.attr('action'), postData, function(response) {
 			self.siblings('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
+			note.val('');
 		});
 		return false;
 	}
