@@ -4,7 +4,7 @@ ul#subjects
 			li.subject(rel: subject._id)
 				form.updatesubject(method: 'post', action: '/subject/' + subject._id + '/rate')
 					span.name #{subject.name}
-					div.stars(id: 'rating-' + subject._id)
+					div.stars(id: 'rating-' + subject._id, rel: subject.rating)
 					.clear
 				.detail
 

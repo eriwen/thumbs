@@ -27,7 +27,6 @@ $(document).ready(function() {
 		starOff: 'star-off-big.png',
 		starOn: 'star-on-big.png'
 	};
-	
 	function submitRating(score, evt) {
 		var ratingForm = this.parent('form').first();
 		var ratingStars = ratingForm.children('.stars').first();
@@ -42,7 +41,8 @@ $(document).ready(function() {
 	}
 	
 	$('.stars').each(function() {
-		$(this).raty(ratyOptions);
+		var self = $(this);
+		self.raty($.extend(ratyOptions, {start: self.attr('rel')}));
 	});
 	
 	function submitNewNote() {
