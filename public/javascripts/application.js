@@ -23,12 +23,12 @@ $(document).ready(function() {
 		evt.stopImmediatePropagation();
 	}
 	
-	$('div.stars').each(function() {
+	$('.updatesubject .stars').each(function() {
 		var self = $(this);
 		self.raty($.extend(ratyOptions, {click: submitRating}));
 	});
 	
-	$('a.stars').each(function() {
+	$('.subjects .stars').each(function() {
 		$(this).raty($.extend(ratyOptions, {start: self.attr('rel'), readOnly: true}));
 	});
 	
