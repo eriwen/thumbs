@@ -4,20 +4,21 @@ var zombie = require('zombie'),
 
 zombie.visit('http://localhost', {debug: true}, function(err, browser) {
 	if (err) {
-		console.log(err.message);
+		browser.log(err);
 	} else {
 		var testSubjectName = 'Test subject';
 		browser.fill('#newsubject input[type=text]', testSubjectName);
 		browser.pressButton("Create New", function(err, browser, status) {
-			if (err) console.log(err);
+			if (err) browser.log(err);
 			assertSubjectExists(testSubjectName);
-			deleteTestSubjects(testSubjectName);
-			// Object .subject:last has no method 'dispatchEvent'
-			browser.fire('click', '.subject:last', function() {
-				console.log('yaysauce');
+			var newSubject = browser.querySelector('.subject:last');
+			browser.fire('click', newSubject, function() {
+				browser.log('yaysauce');
+				browser.log(browser.html('.subject:last'));
 			});
+			deleteTestSubjects(testSubjectName);
 		});
-		console.log('done');
+		browser.log('done');
 	}
 });
 
@@ -31,7 +32,7 @@ function deleteTestSubjects(name) {
 	Subject.find({'name': name}, function(err, docs) {
 		for (var i = 0; i < docs.length; i++) {
 			docs[i].remove(function(err) {
-				if (err) console.log(err);
+				if (err) browser.log(err);
 			});
 		}
 	});
