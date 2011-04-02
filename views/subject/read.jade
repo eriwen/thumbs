@@ -1,6 +1,7 @@
-h1.subject= subject.name
-form.updatesubject(method: 'post', action: '/' + subject._id + '/rate')
+form.subject(method: 'post', action: '/' + subject._id + '/rate')
+	span.name #{subject.name}
 	.stars(id: 'rating-' + subject._id, rel: subject.rating)
+	.clear
 
 h2 Notes
 ul.notes

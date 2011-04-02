@@ -23,7 +23,7 @@ $(document).ready(function() {
 		evt.stopImmediatePropagation();
 	}
 	
-	$('.updatesubject .stars').each(function() {
+	$('.subject .stars').each(function() {
 		var self = $(this);
 		self.raty($.extend(ratyOptions, {click: submitRating}));
 	});
