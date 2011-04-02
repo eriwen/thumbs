@@ -29,7 +29,8 @@ $(document).ready(function() {
 	});
 	
 	$('.subjects .stars').each(function() {
-		$(this).raty($.extend(ratyOptions, {start: self.attr('rel'), readOnly: true}));
+		var self = $(this);
+		self.raty($.extend(ratyOptions, {start: self.attr('rel'), readOnly: true}));
 	});
 	
 	function submitNewNote() {
