@@ -6,44 +6,57 @@ zombie.visit('http://localhost', {debug: true}, runTest);
 
 function runTest(err, browser) {
 	if (err) browser.log(err);
-	else createNewSubject(browser);
+	else {
+		createNewSubject(browser, assertSubjectExists);
+		browser.wait(rate);
+		browser.wait(clickSubject);
+		browser.wait(addNote);
+		browser.wait(deleteTestSubjects);
+	}
 }
 
-function createNewSubject(browser) {
+function createNewSubject(browser, callback) {
 	browser.fill('#newsubject input[type=text]', 'Test subject');
-	browser.pressButton('Create New', verifyNewSubjectAndAddNote);
+	browser.pressButton('Create New', callback);
 }
 
-function verifyNewSubjectAndAddNote(err, browser, status) {
-	if (err) browser.log(err);
-	assertSubjectExists('Test subject');
-	browser.fire('click', browser.querySelector('.subject:last div.stars img:last'), verifyRating);
-	browser.wait(function addNoteCallback() {
-		browser.fire('click', browser.querySelector('.subject:last'), fillAndSubmitAddNoteForm);
-	});
-}
-
-function assertSubjectExists(name) {
-	Subject.findOne({'name': name}, function(err, doc) {
+function assertSubjectExists(err, browser) {
+	Subject.findOne({'name': 'Test subject'}, function(err, doc) {
 		assert.ok(doc);
 	});
 }
 
+function rate(err, browser) {
+	if (err) browser.log(err);
+	browser.fire('click', browser.querySelector('.subject:last div.stars img:last'), verifyRating);
+}
+
 function verifyRating(err, browser) {
+	if (err) browser.log(err);
 	var ratingInput = browser.querySelector('.subject:last div.stars input[type="hidden"]');
 	assert.equal(ratingInput.getAttribute('value'), '5');
 }
 
-function fillAndSubmitAddNoteForm(err, browser) {
+function clickSubject(err, browser) {
+	if (err) browser.log(err);
+	browser.fire('click', browser.querySelector('.subject:last'), verifyOpenSubject);
+}
+
+function verifyOpenSubject(err, browser) {
+	if (err) browser.log(err);
+	var detail = browser.querySelector('.subject:last .detail');
+	assert.equal(detail.getAttribute('loaded'), 'true');
+}
+
+function addNote(err, browser) {
 	if (err) browser.log(err);
 	browser.wait(function(err, browser) {
 		browser.log(browser.html('.subject:last'));
-		deleteTestSubjects('Test subject');
 	});
 }
 
-function deleteTestSubjects(name) {
-	Subject.find({'name': name}, function(err, docs) {
+function deleteTestSubjects(err, browser) {
+	Subject.find({'name': 'Test subject'}, function(err, docs) {
 		for (var i = 0; i < docs.length; i++) {
 			docs[i].remove(function(err) {
 				if (err) browser.log(err);
