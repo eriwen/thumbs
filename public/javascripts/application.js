@@ -28,7 +28,7 @@ $(document).ready(function() {
 		self.raty($.extend(ratyOptions, {click: submitRating}));
 	});
 	
-	$('.subjects .stars').each(function() {
+	$('#subjects .stars').each(function() {
 		var self = $(this);
 		self.raty($.extend(ratyOptions, {start: self.attr('rel'), readOnly: true}));
 	});
@@ -45,4 +45,8 @@ $(document).ready(function() {
 	}
 	
 	$('form.addnote').submit(submitNewNote);
+	
+	$('#subjects .subject').click(function() {
+		window.location = '/' + $(this).attr('rel');
+	});
 });
