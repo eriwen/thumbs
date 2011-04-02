@@ -2,7 +2,6 @@ $(document).ready(function() {
 	var ratyOptions = {
 		path: '../images',
 		size: 32,
-		click: submitRating,
 		width: 280,
 		// TODO: custom stars (larger)
 		cancelOff: 'cancel-off-big.png',
@@ -24,9 +23,13 @@ $(document).ready(function() {
 		evt.stopImmediatePropagation();
 	}
 	
-	$('.stars').each(function() {
+	$('div.stars').each(function() {
 		var self = $(this);
-		self.raty($.extend(ratyOptions, {start: self.attr('rel')}));
+		self.raty($.extend(ratyOptions, {click: submitRating}));
+	});
+	
+	$('a.stars').each(function() {
+		$(this).raty($.extend(ratyOptions, {start: self.attr('rel'), readOnly: true}));
 	});
 	
 	function submitNewNote() {
@@ -39,4 +42,6 @@ $(document).ready(function() {
 		});
 		return false;
 	}
+	
+	$('form.addnote').submit(submitNewNote);
 });
