@@ -16,7 +16,7 @@ function runTest(err, browser) {
 }
 
 function createNewSubject(browser, callback) {
-	browser.fill('#newsubject input[type=text]', 'Test subject');
+	browser.fill('#newsubject input[type="text"]', 'Test subject');
 	browser.pressButton('Create New', callback);
 }
 
@@ -51,8 +51,16 @@ function verifyOpenSubject(err, browser) {
 function addNote(err, browser) {
 	if (err) browser.log(err);
 	browser.wait(function(err, browser) {
-		browser.log(browser.html('.subject:last'));
+		if (err) browser.log(err);
+		browser.fill('.subject:last .addnote .note', 'test note');
+		browser.pressButton('Add Note', verifyNewNote);
 	});
+}
+
+function verifyNewNote(err, browser) {
+	if (err) browser.log(err);
+	var newNote = browser.querySelector('.subject:last .notes li');
+	assert.equal(newNote.innerHTML, 'test note');
 }
 
 function deleteTestSubjects(err, browser) {
