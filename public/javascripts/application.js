@@ -1,20 +1,4 @@
 $(document).ready(function() {
-	var subjects = $('.subject');
-	subjects.click(function() {
-		var self = $(this);
-		subjects.removeClass('active');
-		self.addClass('active');
-
-		var detail = self.children('.detail').first();
-		if (!detail.attr('loaded')) {
-			$.get('/subject/' + self.attr('rel'), function(data) {
-				detail.append(data);
-				detail.children('.addnote').submit(submitNewNote);
-			});
-			detail.attr('loaded', 'true');
-		}
-	});
-	
 	var ratyOptions = {
 		path: '../images',
 		size: 32,

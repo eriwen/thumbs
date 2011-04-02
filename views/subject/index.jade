@@ -2,12 +2,8 @@ ul#subjects
 	- each subject in subjects
 		- if (!subject.archived)
 			li.subject(rel: subject._id)
-				form.updatesubject(method: 'post', action: '/subject/' + subject._id + '/rate')
-					span.name #{subject.name}
-					div.stars(id: 'rating-' + subject._id, rel: subject.rating)
-					.clear
-				.detail
+				a.stars(href: '/' + subject._id, rel: subject.rating)
 
-form#newsubject(method: 'post', action: '/subject/create')
+form#newsubject(method: 'post', action: '/create')
 	input(type: 'text', name: 'subject[name]')
 	input(type: 'submit', value: 'Create New')

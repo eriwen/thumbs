@@ -47,7 +47,7 @@ exports.rate = function(req, res) {
 		});
 		res.send('{"r":' + subject.rating + '}');
 	});
-	// TODO: handle this case
+	// TODO: store state in localStorage or something
 };
 
 exports.note = function(req, res) {
@@ -58,7 +58,22 @@ exports.note = function(req, res) {
 		});
 		res.send('{"n":"' + req.body.content + '"}');
 	});
-	// TODO: handle this case
+};
+
+exports.invite = function(req, res) {
+	// TODO: send email
+	console.log(req.body);
+	res.redirect('back');
+};
+
+exports.archive = function(req, res) {
+	Subject.findOne({_id: req.params.id}, function(err, subject) {
+		subject.archived = true;
+		subject.save(function(err) {
+			if (err) console.log(err);
+		});
+	});
+	res.redirect('/');
 };
 
 exports.delete = function(req, res) {
@@ -67,5 +82,5 @@ exports.delete = function(req, res) {
 			if (err) console.log(err);
 		});
 	});
-	res.redirect('back');
+	res.redirect('/');
 };

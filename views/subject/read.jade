@@ -1,7 +1,23 @@
+h1 subject.name
+form.updatesubject(method: 'post', action: '/' + subject._id + '/rate')
+	div.stars(id: 'rating-' + subject._id, rel: subject.rating)
+
+h2 Notes
 ul.notes
 	- each note in subject.notes
 		li.content= note
 
-form.addnote(method: 'post', action: '/subject/' + subject._id + '/note', rel: subject._id)
+form.addnote(method: 'post', action: '/' + subject._id + '/note', rel: subject._id)
 	input.note(type: 'text', name: 'content')
 	input(type: 'submit', value: 'Add Note')
+
+h2 Add Collaborators
+form.invite(method: 'post', action: '/' + subject._id + '/invite', rel: subject._id)
+	p Enter comma-separated email addresses to invite for their input
+	input(type: 'text', name: 'emails')
+	input(type: 'submit', value: 'Send Invite')
+
+h2 Admin
+span.admin
+	a(href: '/' + subject._id + '/archive') Archive
+	a(href: '/' + subject._id + '/delete') Delete

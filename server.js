@@ -27,10 +27,12 @@ app.use(app.router);
 });*/
 
 app.get('/', subject.list);
-app.post('/subject/create', subject.create);
-app.get('/subject/:id', subject.read);
-app.post('/subject/:id/rate', subject.rate);
-app.post('/subject/:id/note', subject.note);
-app.get('/subject/:id/delete', subject.delete);
+app.post('/create', subject.create);
+app.get('/:id', subject.read);
+app.post('/:id/rate', subject.rate);
+app.post('/:id/note', subject.note);
+app.post('/:id/invite', subject.invite);
+app.get('/:id/archive', subject.archive);
+app.get('/:id/delete', subject.delete);
 
 app.listen(port);
