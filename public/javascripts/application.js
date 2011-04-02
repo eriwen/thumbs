@@ -7,15 +7,13 @@ $(document).ready(function() {
 
 		var detail = self.children('.detail').first();
 		if (!detail.attr('loaded')) {
-			$.get('/subject/' + self.attr('rel'), loadDetail);
+			$.get('/subject/' + self.attr('rel'), function(data) {
+				detail.append(data);
+				detail.children('.addnote').submit(submitNewNote);
+			});
 			detail.attr('loaded', 'true');
 		}
 	});
-	
-	function loadDetail(data) {
-		detail.append(data);
-		detail.children('.addnote').submit(submitNewNote);
-	}
 	
 	var ratyOptions = {
 		path: '../images',
