@@ -42,7 +42,7 @@ $(document).ready(function() {
 	
 	function appendNewNote(response) {
 		$('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
-		$('.addnote').first().val('');
+		$('.addnote .note').val('');
 	}
 	
 	$('form.addnote').submit(submitNewNote);
