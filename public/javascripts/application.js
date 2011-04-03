@@ -45,8 +45,4 @@ $(document).ready(function() {
 	}
 	
 	$('form.addnote').submit(submitNewNote);
-	
-	$('#subjects .subject').click(function() {
-		window.location = '/' + $(this).attr('rel');
-	});
 });

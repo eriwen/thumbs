@@ -33,13 +33,14 @@ function assertSubjectExists(err, browser) {
 function clickSubject(err, browser) {
 	browser.log('clickSubject()');
 	if (err) browser.log(err);
-	browser.clickLink('click', browser.querySelector('.subject:last a'), verifyOpenSubject);
+	browser.log(browser.html('.subject:last a'));
+	browser.clickLink(browser.querySelector('.subject:last a'), verifyOpenSubject);
 	browser.log('end clickSubject()');
 }
 
 function verifyOpenSubject(err, browser, status) {
-	browser.log('verifyOpenSubject()');
 	if (err) browser.log(err);
+	browser.log('verifyOpenSubject()');
 	browser.log('status ' + status);
 	assert.equal(browser.text('title'), 'Test subject');
 	browser.log('end verifyOpenSubject()');
