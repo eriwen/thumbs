@@ -8,8 +8,8 @@ function runTest(err, browser) {
 	if (err) browser.log(err);
 	else {
 		createNewSubject(browser, assertSubjectExists);
-		browser.wait(rate);
 		browser.wait(clickSubject);
+		browser.wait(rate);
 		browser.wait(addNote);
 		browser.wait(deleteTestSubjects);
 	}
@@ -44,22 +44,21 @@ function clickSubject(err, browser) {
 
 function verifyOpenSubject(err, browser) {
 	if (err) browser.log(err);
-	var detail = browser.querySelector('.subject:last .detail');
-	assert.equal(detail.getAttribute('loaded'), 'true');
+	assert.equal(browser.title(), 'Test subject');
 }
 
 function addNote(err, browser) {
 	if (err) browser.log(err);
 	browser.wait(function(err, browser) {
 		if (err) browser.log(err);
-		browser.fill('.subject:last .addnote .note', 'test note');
+		browser.fill('.addnote .note', 'test note');
 		browser.pressButton('Add Note', verifyNewNote);
 	});
 }
 
 function verifyNewNote(err, browser) {
 	if (err) browser.log(err);
-	var newNote = browser.querySelector('.subject:last .notes li');
+	var newNote = browser.querySelector('.notes li');
 	assert.equal(newNote.innerHTML, 'test note');
 }
 

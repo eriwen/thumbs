@@ -13,10 +13,10 @@ function computeRating(ratings) {
 }
 
 exports.list = function(req, res) {
-	Subject.find({}, function(err, objs) {
+	Subject.find({}, function(err, docs) {
 		res.render('subject', { 
 			title: 'Thumbs',
-			subjects: objs
+			subjects: docs
 		});
 	});
 };
@@ -32,7 +32,7 @@ exports.create = function(req, res) {
 exports.read = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
 		res.render('subject/read', {
-			title: 'Subject: ' + subject.name,
+			title: subject.name,
 			subject: subject
 		});
 	});
