@@ -33,7 +33,7 @@ function assertSubjectExists(err, browser) {
 function clickSubject(err, browser) {
 	browser.log('clickSubject()');
 	if (err) browser.log(err);
-	browser.fire('click', browser.querySelector('.subject:last'), verifyOpenSubject);
+	browser.clickLink('click', browser.querySelector('.subject:last a'), verifyOpenSubject);
 	browser.log('end clickSubject()');
 }
 

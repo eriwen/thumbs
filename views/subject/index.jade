@@ -5,7 +5,7 @@ ul#subjects
 				a(href: '/' + subject._id)
 					span.name #{subject.name}
 					.stars(id: 'rating-' + subject._id, rel: subject.rating)
-				.clear
+					.clear
 
 form#newsubject(method: 'post', action: '/create')
 	input(type: 'text', name: 'subject[name]')
