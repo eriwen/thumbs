@@ -1,6 +1,6 @@
 var Subject = require('../models/subject').Subject;
 
-function computeRating(ratings) {
+function _computeRating(ratings) {
 	var len = ratings.length,
 		total = 0.0;
 	if (len == 0) {
@@ -41,7 +41,7 @@ exports.read = function(req, res) {
 exports.rate = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
 		subject.ratings.push(parseFloat(req.body.score));
-		subject.rating = computeRating(subject.ratings);
+		subject.rating = (new SubjectController()).computeRating(subject.ratings);
 		subject.save(function(err) {
 			if (err) console.log(err);
 		});
@@ -49,6 +49,8 @@ exports.rate = function(req, res) {
 	});
 	// TODO: store state in localStorage or something
 };
+
+exports.computeRating = _computeRating;
 
 exports.note = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {

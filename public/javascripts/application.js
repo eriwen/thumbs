@@ -34,14 +34,16 @@ $(document).ready(function() {
 	});
 	
 	function submitNewNote() {
-		var self = $(this),
-			note = self.children('.note').first();
-		postData = 'content=' + note.val();
-		$.post(self.attr('action'), postData, function(response) {
-			self.siblings('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
-			note.val('');
-		});
+		var self = $(this);
+		postData = 'content=' + self.children('.note').first().val();
+		$.post(self.attr('action'), postData, appendNewNote);
 		return false;
+	}
+	
+	function appendNewNote(response) {
+		var self = $(this);
+		self.siblings('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
+		self.children('.note').first().val('');
 	}
 	
 	$('form.addnote').submit(submitNewNote);
