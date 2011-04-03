@@ -41,9 +41,8 @@ $(document).ready(function() {
 	}
 	
 	function appendNewNote(response) {
-		var self = $(this);
-		self.siblings('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
-		self.children('.note').first().val('');
+		$('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
+		$('.addnote').first().val('');
 	}
 	
 	$('form.addnote').submit(submitNewNote);
