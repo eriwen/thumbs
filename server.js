@@ -4,6 +4,7 @@ var express = require('express'),
     pub = __dirname + '/public',
 	views = __dirname + '/views',
 	subject = require('./controllers/subject'),
+	stacktrace = require('./stacktrace'),
     port = process.env.PORT || 8001;
 
 app.use(stylus.middleware({
@@ -13,30 +14,20 @@ app.use(stylus.middleware({
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(express.logger({ format: ':method :url :status' }));
-// NOTE: must include there here and NOT in app.config or req.body will always be undefined!
+app.use(express.logger({ format: ':date :method :url :status :response-time' }));
 app.use(express.bodyParser());
 app.use(express.cookieParser());
 app.use(express.session({ secret: 'thesecret' }));
 app.use(app.router);
 
 // Server error page
-app.error(function(err, req, res) {
-	console.log('app.error');
+process.on('uncaughtException', function(err) {
 	for (var prop in err) {
 		console.log(prop + ' is ' + err[prop]);
 	}
-	console.log('------');
 	console.dir(err);
 	res.render('500');
 });
-
-/*process.on('uncaughtException', function(err) {
-	console.log('uncaughtexception');
-	for (var prop in err) {
-		console.log(prop + ' is ' + err[prop]);
-	}
-});*/
 
 app.get('/', subject.list);
 app.post('/create', subject.create);
