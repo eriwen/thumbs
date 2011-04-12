@@ -30,14 +30,8 @@ exports.create = function(req, res) {
 };
 
 exports.read = function(req, res) {
-	Subject.findOne({_id: '4d9a9af04f2b2c6d530000'}, function(err, subject) {
-		if (err) {
-			console.log(err);
-			// TODO: stacktrace
-			for (var prop in err) {
-				console.log(prop + ' is ' + err[prop]);
-			}
-		}
+	Subject.findOne({_id: req.params.id}, function(err, subject) {
+		if (err) console.log(err);
 		res.render('subject/read', {
 			title: subject.name,
 			subject: subject
