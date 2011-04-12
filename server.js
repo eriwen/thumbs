@@ -24,7 +24,7 @@ app.use(app.router);
 app.error(function(err, req, res) {
 	console.log('app.error');
 	for (var prop in err) {
-		console.log(prop + ' is ' + err);
+		console.log(prop + ' is ' + err[prop]);
 	}
 	console.log('------');
 	console.dir(err);
@@ -34,7 +34,7 @@ app.error(function(err, req, res) {
 process.on('uncaughtException', function(err) {
 	console.log('uncaughtexception');
 	for (var prop in err) {
-		console.log(prop + ' is ' + err);
+		console.log(prop + ' is ' + err[prop]);
 	}
 });
 
