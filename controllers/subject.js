@@ -30,7 +30,20 @@ exports.create = function(req, res) {
 };
 
 exports.read = function(req, res) {
+	try {
+		console.log('hi');
+		this.__undef();
+	} catch (e) {
+		console.log('eeror');
+		for (var prop in e) {
+			console.log('prop is ' + e[prop]);
+		}
+	}
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
+		if (err) {
+			console.log(err);
+			// TODO: stacktrace
+		}
 		res.render('subject/read', {
 			title: subject.name,
 			subject: subject
@@ -41,7 +54,7 @@ exports.read = function(req, res) {
 exports.rate = function(req, res) {
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
 		subject.ratings.push(parseFloat(req.body.score));
-		subject.rating = (new SubjectController()).computeRating(subject.ratings);
+		subject.rating = _computeRating(subject.ratings);
 		subject.save(function(err) {
 			if (err) console.log(err);
 		});
