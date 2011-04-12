@@ -30,17 +30,13 @@ exports.create = function(req, res) {
 };
 
 exports.read = function(req, res) {
-	try {
-		this.__undef();
-	} catch (e) {
-		for (var prop in e) {
-			console.log(prop + ' is ' + e[prop]);
-		}
-	}
-	Subject.findOne({_id: req.params.id}, function(err, subject) {
+	Subject.findOne({_id: req.params.id + 'zz'}, function(err, subject) {
 		if (err) {
 			console.log(err);
 			// TODO: stacktrace
+			for (var prop in err) {
+				console.log(prop + ' is ' + err[prop]);
+			}
 		}
 		res.render('subject/read', {
 			title: subject.name,
