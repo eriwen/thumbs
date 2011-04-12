@@ -31,12 +31,12 @@ app.error(function(err, req, res) {
 	res.render('500');
 });
 
-process.on('uncaughtException', function(err) {
+/*process.on('uncaughtException', function(err) {
 	console.log('uncaughtexception');
 	for (var prop in err) {
 		console.log(prop + ' is ' + err[prop]);
 	}
-});
+});*/
 
 app.get('/', subject.list);
 app.post('/create', subject.create);
