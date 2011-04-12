@@ -31,12 +31,10 @@ exports.create = function(req, res) {
 
 exports.read = function(req, res) {
 	try {
-		console.log('hi');
 		this.__undef();
 	} catch (e) {
-		console.log('eeror');
 		for (var prop in e) {
-			console.log('prop is ' + e[prop]);
+			console.log(prop + ' is ' + e[prop]);
 		}
 	}
 	Subject.findOne({_id: req.params.id}, function(err, subject) {
