@@ -60,6 +60,8 @@ function printStackTrace(options) {
     return (guess) ? p.guessFunctions(result) : result;
 }
 
+if (exports) exports.stacktrace = printStackTrace;
+
 printStackTrace.implementation = function() {};
 
 printStackTrace.implementation.prototype = {
