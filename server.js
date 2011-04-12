@@ -21,10 +21,22 @@ app.use(express.session({ secret: 'thesecret' }));
 app.use(app.router);
 
 // Server error page
-/*app.error(function(err, req, res){
+app.error(function(err, req, res) {
+	console.log('app.error');
+	for (var prop in err) {
+		console.log(prop ' is ' + err);
+	}
+	console.log('------');
 	console.dir(err);
 	res.render('500');
-});*/
+});
+
+process.on('uncaughtException', function(err) {
+	console.log('uncaughtexception');
+	for (var prop in err) {
+		console.log(prop ' is ' + err);
+	}
+});
 
 app.get('/', subject.list);
 app.post('/create', subject.create);
