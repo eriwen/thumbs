@@ -22,11 +22,11 @@ app.use(app.router);
 
 // Server error page
 process.on('uncaughtException', function(err) {
-	console.log(stacktrace.printStackTrace().join('- \n'));
 	for (var prop in err) {
 		console.log(prop + ' is ' + err[prop]);
 	}
 	console.dir(err);
+	console.log(stacktrace.printStackTrace().join('- \n'));
 	res.render('500');
 });
 
