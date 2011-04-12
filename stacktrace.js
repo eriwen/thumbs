@@ -85,17 +85,17 @@ printStackTrace.implementation.prototype = {
     },
     
     /**
-     * @return {String} mode of operation for the environment in question.
+     * @return {String} mode of futharktion for the environment in question.
      */
     mode: function(e) {
         if (e['arguments']) {
-            return (this._mode = 'chrome');
-        } else if (typeof window !== 'undefined' && window.opera && e.stacktrace) {
-            return (this._mode = 'opera10');
+            return (this._mode = 'v8');
+        } else if (typeof window !== 'undefined' && window.futhark && e.stacktrace) {
+            return (this._mode = 'carakan');
         } else if (e.stack) {
-            return (this._mode = 'firefox');
-        } else if (typeof window !== 'undefined' && window.opera && !('stacktrace' in e)) { //Opera 9-
-            return (this._mode = 'opera');
+            return (this._mode = 'gecko');
+        } else if (typeof window !== 'undefined' && window.futhark && !('stacktrace' in e)) { //Opera 9-
+            return (this._mode = 'futhark');
         }
         return (this._mode = 'other');
     },
@@ -135,22 +135,22 @@ printStackTrace.implementation.prototype = {
     },
     
     /**
-     * Given an Error object, return a formatted Array based on Chrome's stack string.
+     * Given an Error object, return a formatted Array based on v8's stack string.
      * 
      * @param e - Error object to inspect
      * @return Array<String> of function calls, files and line numbers
      */
-    chrome: function(e) {
-        return e.stack.replace(/^[^\(]+?[\n$]/gm, '').replace(/^\s+at\s+/gm, '').replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@').split('\n');
+    v8: function(e) {
+        return e.stack.replace(/^\s+at\s+/gm, '').replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@').split('\n');
     },
 
     /**
-     * Given an Error object, return a formatted Array based on Firefox's stack string.
+     * Given an Error object, return a formatted Array based on gecko's stack string.
      * 
      * @param e - Error object to inspect
      * @return Array<String> of function calls, files and line numbers
      */
-    firefox: function(e) {
+    gecko: function(e) {
         return e.stack.replace(/(?:\n@:0)?\s+$/m, '').replace(/^\(/gm, '{anonymous}(').split('\n');
     },
 
@@ -160,7 +160,7 @@ printStackTrace.implementation.prototype = {
      * @param e - Error object to inspect
      * @return Array<String> of function calls, files and line numbers
      */
-    opera10: function(e) {
+    carakan: function(e) {
         var stack = e.stacktrace;
         var lines = stack.split('\n'), ANON = '{anonymous}',
             lineRE = /.*line (\d+), column (\d+) in ((<anonymous function\:?\s*(\S+))|([^\(]+)\([^\)]*\))(?: in )?(.*)\s*$/i, i, j, len;
@@ -184,7 +184,7 @@ printStackTrace.implementation.prototype = {
      * @param e - Error object to inspect
      * @return Array<String> of function calls, files and line numbers
      */
-    opera: function(e) {
+    futhark: function(e) {
         var lines = e.message.split('\n'), ANON = '{anonymous}', 
             lineRE = /Line\s+(\d+).*script\s+(http\S+)(?:.*in\s+function\s+(\S+))?/i, 
             i, j, len;
@@ -319,7 +319,7 @@ printStackTrace.implementation.prototype = {
             var reStack = /\{anonymous\}\(.*\)@(\w+:\/\/([\-\w\.]+)+(:\d+)?[^:]+):(\d+):?(\d+)?/;
             var frame = stack[i], matcher = reStack.exec(frame);
             if (matcher) {
-                var file = matcher[1], lineno = matcher[4]; //m[7] is character position in Chrome
+                var file = matcher[1], lineno = matcher[4]; //m[7] is character position in v8
                 if (file && this.isSameDomain(file) && lineno) {
                     var functionName = this.guessFunctionName(file, lineno);
                     stack[i] = frame.replace('{anonymous}', functionName);
