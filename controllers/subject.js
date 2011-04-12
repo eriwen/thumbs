@@ -30,7 +30,7 @@ exports.create = function(req, res) {
 };
 
 exports.read = function(req, res) {
-	Subject.findOne({_id: req.params.id + 'zz'}, function(err, subject) {
+	Subject.findOne({_id: '4d9a9af04f2b2c6d530000'}, function(err, subject) {
 		if (err) {
 			console.log(err);
 			// TODO: stacktrace
