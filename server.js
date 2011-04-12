@@ -26,7 +26,7 @@ process.on('uncaughtException', function(err) {
 		console.log(prop + ' is ' + err[prop]);
 	}
 	console.dir(err);
-	console.log(stacktrace(e: err).join('\n -'));
+	console.log(stacktrace({e: err}).join('\n -'));
 	res.render('500');
 });
 
