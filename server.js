@@ -4,7 +4,7 @@ var express = require('express'),
     pub = __dirname + '/public',
 	views = __dirname + '/views',
 	subject = require('./controllers/subject'),
-	stacktrace = require('./stacktrace').stacktrace,
+	stacktrace = require('./stacktrace'),
     port = process.env.PORT || 8001;
 
 app.use(stylus.middleware({
@@ -26,7 +26,6 @@ process.on('uncaughtException', function(err) {
 		console.log(prop + ' is ' + err[prop]);
 	}
 	console.dir(err);
-	console.log(stacktrace({e: err}).join('\n'));
 	res.render('500');
 });
 
