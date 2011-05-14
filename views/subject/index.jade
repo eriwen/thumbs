@@ -1,5 +1,7 @@
 ul#subjects
-
+	- each subject in subjects
+		- if (!subject.archived)
+			li.subject(rel: subject._id)
 
 form#newsubject(method: 'post', action: '/create')
 	input(type: 'text', name: 'subject[name]')
