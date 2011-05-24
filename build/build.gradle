@@ -1,14 +1,20 @@
-def jshintConfig = 'jshint.json';
-def srcDir = '../'
+defaultTasks 'all'
+
+def jshintConfig = 'build/jshint.json'
+def srcDir = '.'
 
 task jshint << {
 	description = 'runs jshint on all non-test JS files'
-	def jsPattern = ~/.*(?<!(raty|test))\.js/
+	def jsPattern = ~/.*(?<!(raty|test).*)\.js/
 	def jsFiles = [];
-	new File(srcDir).eachFileMatch(jsPattern) {
-	    jsFiles << it.canonicalPath
+	new File(srcDir).eachFileRecurse {
+		if (it.canonicalPath =~ jsPattern) {
+	    	jsFiles << it.canonicalPath
+		}
 	}
-	println "jshint ${jsFiles.join(' ')} --config ${jshintConfig}".execute().text
+	def command = "jshint ${jsFiles.join(' ')} --config ${jshintConfig}"
+	println "executing ${command}"
+	println command.execute().text
 }
 
 task all(dependsOn: ['jshint']) << {

@@ -33,16 +33,16 @@ $(document).ready(function() {
 		self.raty($.extend(ratyOptions, {start: self.attr('rel'), readOnly: true}));
 	});
 	
-	function submitNewNote() {
-		var self = $(this);
-		postData = 'content=' + self.children('.note').first().val();
-		$.post(self.attr('action'), postData, appendNewNote);
-		return false;
-	}
-	
 	function appendNewNote(response) {
 		$('.notes').first().append('<li class="content">' + $.parseJSON(response).n + '</li>');
 		$('.addnote .note').val('');
+	}
+	
+	function submitNewNote() {
+		var self = $(this);
+		var postData = 'content=' + self.children('.note').first().val();
+		$.post(self.attr('action'), postData, appendNewNote);
+		return false;
 	}
 	
 	$('form.addnote').submit(submitNewNote);
