@@ -8,7 +8,7 @@ task jshint << {
 	new File(srcDir).eachFileMatch(jsPattern) {
 	    jsFiles << it.canonicalPath
 	}
-	"jshint ${jsFiles.join(' ')} --config ${jshintConfig}".execute()
+	println "jshint ${jsFiles.join(' ')} --config ${jshintConfig}".execute().text
 }
 
 task all(dependsOn: ['jshint']) << {
