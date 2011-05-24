@@ -18,7 +18,7 @@ $(document).ready(function() {
 			var newRating = $.parseJSON(response).r;
 			ratingStars.empty().removeAttr('title').removeAttr('id');
 			ratingStars.css({opacity: '0.75'});
-			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}))
+			ratingStars.raty($.extend(ratyOptions, {readOnly: true, start: newRating}));
 		});
 		evt.stopImmediatePropagation();
 	}

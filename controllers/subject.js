@@ -3,7 +3,7 @@ var Subject = require('../models/subject').Subject;
 function _computeRating(ratings) {
 	var len = ratings.length,
 		total = 0.0;
-	if (len == 0) {
+	if (len === 0) {
 		return total;
 	}
 	for(var i = 0; i < len; i++) {

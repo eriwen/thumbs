@@ -1,0 +1,16 @@
+def jshintConfig = 'jshint.json';
+def srcDir = '../'
+
+task jshint << {
+	description = 'runs jshint on all non-test JS files'
+	def jsPattern = ~/.*(?<!(raty|test))\.js/
+	def jsFiles = [];
+	new File(srcDir).eachFileMatch(jsPattern) {
+	    jsFiles << it.canonicalPath
+	}
+	"jshint ${jsFiles.join(' ')} --config ${jshintConfig}".execute()
+}
+
+task all(dependsOn: ['jshint']) << {
+	println "Done"
+}
