@@ -19,7 +19,7 @@ task jshint << {
 
 task jasmine << {
 	description = 'runs jasmine specs'
-	println "node ${testDir}/specs.js --verbose".execute().text
+	println "./${testDir}/specs.sh --verbose".execute().text
 }
 
 task zombie << {
