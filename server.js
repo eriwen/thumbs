@@ -4,7 +4,7 @@ var express = require('express'),
     pub = __dirname + '/public',
 	views = __dirname + '/views',
 	subject = require('./controllers/subject'),
-	stacktrace = require('./stacktrace'),
+	stacktrace = require('./lib/stacktrace'),
     port = process.env.PORT || 8001;
 
 app.use(stylus.middleware({

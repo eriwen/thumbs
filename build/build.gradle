@@ -2,10 +2,11 @@ defaultTasks 'all'
 
 def jshintConfig = 'build/jshint.json'
 def srcDir = '.'
+def testDir = 'test'
 
 task jshint << {
-	description = 'runs jshint on all non-test JS files'
-	def jsPattern = ~/.*(?<!(raty|test).*)\.js/
+	description = 'runs jshint on all non-test and lib JS files'
+	def jsPattern = ~/.*(?<!(raty|test|lib).*)\.js/
 	def jsFiles = [];
 	new File(srcDir).eachFileRecurse {
 		if (it.canonicalPath =~ jsPattern) {
@@ -13,10 +14,25 @@ task jshint << {
 		}
 	}
 	def command = "jshint ${jsFiles.join(' ')} --config ${jshintConfig}"
-	println "executing ${command}"
 	println command.execute().text
 }
 
-task all(dependsOn: ['jshint']) << {
-	println "Done"
+task jasmine << {
+	description = 'runs jasmine specs'
+	println "node ${testDir}/specs.js --verbose".execute().text
+}
+
+task zombie << {
+	description = 'runs functional tests'
+	new File("${testDir}/integration").eachFileRecurse {
+		println "node ${it.canonicalPath}".execute().text
+	}
+}
+
+task test(dependsOn: ['jasmine', 'zombie']) << {
+	println 'Running tests...'
+}
+
+task all(dependsOn: ['jshint', 'test']) << {
+	println 'Build complete'
 }
