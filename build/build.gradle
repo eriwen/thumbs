@@ -1,6 +1,7 @@
 defaultTasks 'all'
 
 def jshintConfig = 'build/jshint.json'
+def jshintOutput = 'jshint.xml'
 def srcDirs = ['controllers', 'models', 'public', 'views']
 def testDir = 'test'
 
@@ -15,10 +16,12 @@ task jshint << {
 			}
 		}
 	}
-	
-	def command = "jshint ${jsFiles.join(' ')} --config ${jshintConfig}"
-	println command
-	println command.execute().text
+
+	def command = "jshint ${jsFiles.join(' ')} --config ${jshintConfig} --jslint-reporter"
+	def output = command.execute().text
+	def jshintFile = new File(jshintOutput)
+	if (jshintFile.exists()) jshintFile.delete()
+	jshintFile.write(output)
 }
 
 task jasmine << {
