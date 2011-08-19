@@ -1,0 +1,20 @@
+{
+	'name': 'thumbs',
+	'description': 'Simple team-based rating application written in NodeJS',
+	'author': 'Eric Wendelin <emwendelin@gmail.com>'
+	'version': '0.1.0',
+	'private': false,
+	'dependencies': {
+		'express': '2.4.x',
+		'jade': '0.14.x',
+		'mongoose': '1.8.x',
+		'stylus': '0.15.x'
+	},
+	'devDependencies': {
+		'jshint': '0.2.x',
+		'csslint': '0.x.x',
+		'jasmine-node': '1.0.x',
+		'zombie': '0.9.x'
+	}
+	'engine': 'node >= 0.4.8'
+}
