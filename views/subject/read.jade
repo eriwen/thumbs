@@ -1,6 +1,6 @@
-form.subject(method: 'post', action: '/' + subject._id + '/rate')
+form.subject(method='post', action='/' + subject._id + '/rate')
 	span.name #{subject.name}
-	.stars(id: 'rating-' + subject._id, rel: subject.rating)
+	.stars(id='rating-' + subject._id, rel=subject.rating)
 	.clear
 
 h2 Notes
@@ -8,18 +8,18 @@ ul.notes
 	- each note in subject.notes
 		li.content= note
 
-form.addnote(method: 'post', action: '/' + subject._id + '/note', rel: subject._id)
-	input.note(type: 'text', name: 'content')
-	input(type: 'submit', value: 'Add Note')
+form.addnote(method='post', action='/' + subject._id + '/note', rel=subject._id)
+	input.note(type='text', name='content')
+	input(type='submit', value='Add Note')
 
 h2 Add Collaborators
-form.invite(method: 'post', action: '/' + subject._id + '/invite', rel: subject._id)
+form.invite(method='post', action='/' + subject._id + '/invite', rel=subject._id)
 	p Enter comma-separated email addresses to invite for their input
-	input(type: 'text', name: 'emails')
-	input(type: 'submit', value: 'Send Invite')
+	input(type='text', name='emails')
+	input(type='submit', value='Send Invite')
 
 h2 Admin
 span.admin
-	a.back(href: '/') &laquo; Back to list
-	a.archive(href: '/' + subject._id + '/archive') Archive
-	a.delete(href: '/' + subject._id + '/delete') Delete
+	a.back(href='/') &laquo; Back to list
+	a.archive(href='/' + subject._id + '/archive') Archive
+	a.delete(href='/' + subject._id + '/delete') Delete
